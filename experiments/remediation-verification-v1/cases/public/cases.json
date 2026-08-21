@@ -1,0 +1,1406 @@
+{
+  "cases": [
+    {
+      "case_id": "A-01",
+      "fleet_size": 1,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Upgrade AcmeReader to 1.4.5 and remove the vulnerable build",
+        "target_state_assertions": [
+          {
+            "id": "READER_145_PRESENT",
+            "op": "package_present",
+            "package": "AcmeReader",
+            "version": "1.4.5"
+          },
+          {
+            "id": "READER_142_ABSENT",
+            "op": "package_absent",
+            "package": "AcmeReader",
+            "version": "1.4.2"
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "AcmeReader upgraded 1.4.2 -> 1.4.5, old build removed",
+      "vulnerability_predicate": {
+        "fixed_version": "1.4.5",
+        "id": "READER_BELOW_145",
+        "op": "package_version_below",
+        "package": "AcmeReader"
+      }
+    },
+    {
+      "case_id": "A-02",
+      "fleet_size": 1,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Set the SMB1 server parameter to 0",
+        "target_state_assertions": [
+          {
+            "id": "SMB1_REG_SECURE",
+            "op": "registry_equals",
+            "path": "HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters\\SMB1",
+            "value": 0
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "SMB1 disabled via registry mitigation",
+      "vulnerability_predicate": {
+        "id": "SMB1_REG_INSECURE",
+        "op": "registry_not_equals",
+        "path": "HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters\\SMB1",
+        "value": 0
+      }
+    },
+    {
+      "case_id": "A-03",
+      "fleet_size": 1,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Delete the vulnerable legacy DLL",
+        "target_state_assertions": [
+          {
+            "id": "LEGACY_DLL_GONE",
+            "op": "file_absent",
+            "path": "C:\\Program Files\\Acme\\legacy\\acmelegacy.dll"
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "Vulnerable legacy DLL removed",
+      "vulnerability_predicate": {
+        "id": "LEGACY_DLL_PRESENT",
+        "op": "file_exists",
+        "path": "C:\\Program Files\\Acme\\legacy\\acmelegacy.dll"
+      }
+    },
+    {
+      "case_id": "A-04",
+      "fleet_size": 1,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Install KB5031234",
+        "target_state_assertions": [
+          {
+            "id": "KB_INSTALLED",
+            "kb": "KB5031234",
+            "op": "patch_installed"
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "Security update KB5031234 installed, no reboot required",
+      "vulnerability_predicate": {
+        "id": "KB5031234_MISSING",
+        "kb": "KB5031234",
+        "op": "patch_missing"
+      }
+    },
+    {
+      "case_id": "A-05",
+      "fleet_size": 1,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Stop AcmeSvc and set startup type to disabled",
+        "target_state_assertions": [
+          {
+            "id": "ACMESVC_STOPPED",
+            "op": "service_stopped",
+            "service": "AcmeSvc"
+          },
+          {
+            "id": "ACMESVC_DISABLED",
+            "op": "service_startup_is",
+            "service": "AcmeSvc",
+            "startup_type": "disabled"
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "Vulnerable listener service stopped and disabled",
+      "vulnerability_predicate": {
+        "id": "ACMESVC_RUNNING",
+        "op": "service_running",
+        "service": "AcmeSvc"
+      }
+    },
+    {
+      "case_id": "A-06",
+      "fleet_size": 1,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Upgrade AcmeReader and apply the macro-blocking policy",
+        "target_state_assertions": [
+          {
+            "id": "READER_145_PRESENT",
+            "op": "package_present",
+            "package": "AcmeReader",
+            "version": "1.4.5"
+          },
+          {
+            "id": "MACRO_POLICY_SECURE",
+            "op": "registry_equals",
+            "path": "HKLM\\SOFTWARE\\Policies\\Acme\\Office\\BlockMacrosFromInternet",
+            "value": 1
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "Composite mitigation: both required components remediated",
+      "vulnerability_predicate": {
+        "op": "any_of",
+        "operands": [
+          {
+            "fixed_version": "1.4.5",
+            "id": "READER_BELOW_145",
+            "op": "package_version_below",
+            "package": "AcmeReader"
+          },
+          {
+            "id": "MACRO_POLICY_INSECURE",
+            "op": "registry_not_equals",
+            "path": "HKLM\\SOFTWARE\\Policies\\Acme\\Office\\BlockMacrosFromInternet",
+            "value": 1
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "A-07",
+      "fleet_size": 10,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Upgrade AcmeReader to 1.4.5 across the targeted group",
+        "target_state_assertions": [
+          {
+            "id": "READER_145_PRESENT",
+            "op": "package_present",
+            "package": "AcmeReader",
+            "version": "1.4.5"
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "Fleet of 10 fully remediated",
+      "vulnerability_predicate": {
+        "fixed_version": "1.4.5",
+        "id": "READER_BELOW_145",
+        "op": "package_version_below",
+        "package": "AcmeReader"
+      }
+    },
+    {
+      "case_id": "A-08",
+      "fleet_size": 1,
+      "notes": "Included so that a verifier cannot score well by simply mirroring exit codes.",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Upgrade AcmeReader to 1.4.5 (post-install cleanup step returns 1)",
+        "target_state_assertions": [
+          {
+            "id": "READER_145_PRESENT",
+            "op": "package_present",
+            "package": "AcmeReader",
+            "version": "1.4.5"
+          },
+          {
+            "id": "READER_142_ABSENT",
+            "op": "package_absent",
+            "package": "AcmeReader",
+            "version": "1.4.2"
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "Noisy non-zero exit code, but the endpoint is genuinely fixed",
+      "vulnerability_predicate": {
+        "fixed_version": "1.4.5",
+        "id": "READER_BELOW_145",
+        "op": "package_version_below",
+        "package": "AcmeReader"
+      }
+    },
+    {
+      "case_id": "B-01",
+      "fleet_size": 1,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Upgrade AcmeReader to 1.4.5",
+        "target_state_assertions": [
+          {
+            "id": "READER_145_PRESENT",
+            "op": "package_present",
+            "package": "AcmeReader",
+            "version": "1.4.5"
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "Installer returns 0, package still on the vulnerable build",
+      "vulnerability_predicate": {
+        "fixed_version": "1.4.5",
+        "id": "READER_BELOW_145",
+        "op": "package_version_below",
+        "package": "AcmeReader"
+      }
+    },
+    {
+      "case_id": "B-02",
+      "fleet_size": 1,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Set the SMB1 server parameter to 0",
+        "target_state_assertions": [
+          {
+            "id": "SMB1_REG_SECURE",
+            "op": "registry_equals",
+            "path": "HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters\\SMB1",
+            "value": 0
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "Registry write silently suppressed by policy, exit 0",
+      "vulnerability_predicate": {
+        "id": "SMB1_REG_INSECURE",
+        "op": "registry_not_equals",
+        "path": "HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters\\SMB1",
+        "value": 0
+      }
+    },
+    {
+      "case_id": "B-03",
+      "fleet_size": 1,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Delete the vulnerable legacy DLL",
+        "target_state_assertions": [
+          {
+            "id": "LEGACY_DLL_GONE",
+            "op": "file_absent",
+            "path": "C:\\Program Files\\Acme\\legacy\\acmelegacy.dll"
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "File delete swallowed by error handling, exit 0",
+      "vulnerability_predicate": {
+        "id": "LEGACY_DLL_PRESENT",
+        "op": "file_exists",
+        "path": "C:\\Program Files\\Acme\\legacy\\acmelegacy.dll"
+      }
+    },
+    {
+      "case_id": "B-04",
+      "fleet_size": 1,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Install KB5031234",
+        "target_state_assertions": [
+          {
+            "id": "KB_INSTALLED",
+            "kb": "KB5031234",
+            "op": "patch_installed"
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "Update wrapper reports success, patch never installed",
+      "vulnerability_predicate": {
+        "id": "KB5031234_MISSING",
+        "kb": "KB5031234",
+        "op": "patch_missing"
+      }
+    },
+    {
+      "case_id": "C-01",
+      "fleet_size": 1,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Apply the macro-blocking policy value",
+        "target_state_assertions": [
+          {
+            "id": "DECOY_POLICY_SET",
+            "op": "registry_equals",
+            "path": "HKLM\\SOFTWARE\\WOW6432Node\\Policies\\Acme\\Office\\BlockMacrosFromInternet",
+            "value": 1
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "Macro policy written under WOW6432Node, vulnerable key is the 64-bit hive",
+      "vulnerability_predicate": {
+        "id": "MACRO_POLICY_INSECURE",
+        "op": "registry_not_equals",
+        "path": "HKLM\\SOFTWARE\\Policies\\Acme\\Office\\BlockMacrosFromInternet",
+        "value": 1
+      }
+    },
+    {
+      "case_id": "C-02",
+      "fleet_size": 1,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Upgrade the AcmeReader MSI package to 1.4.5",
+        "target_state_assertions": [
+          {
+            "id": "MSI_145_PRESENT",
+            "op": "package_present",
+            "package": "AcmeReader (MSI)",
+            "version": "1.4.5"
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "MSI package upgraded, vulnerable per-user package untouched",
+      "vulnerability_predicate": {
+        "fixed_version": "1.4.5",
+        "id": "READER_USER_BELOW_145",
+        "op": "package_version_below",
+        "package": "AcmeReader (per-user)"
+      }
+    },
+    {
+      "case_id": "C-03",
+      "fleet_size": 1,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Stop and disable the Acme listener service",
+        "target_state_assertions": [
+          {
+            "id": "ACMESVCOLD_DISABLED",
+            "op": "service_startup_is",
+            "service": "AcmeSvcOld",
+            "startup_type": "disabled"
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "Deprecated service disabled, the actually-listening service still runs",
+      "vulnerability_predicate": {
+        "id": "ACMESVC_RUNNING",
+        "op": "service_running",
+        "service": "AcmeSvc"
+      }
+    },
+    {
+      "case_id": "C-04",
+      "fleet_size": 1,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Delete the vulnerable legacy DLL",
+        "target_state_assertions": [
+          {
+            "id": "X86_DLL_GONE",
+            "op": "file_absent",
+            "path": "C:\\Program Files (x86)\\Acme\\legacy\\acmelegacy.dll"
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "DLL deleted from the x86 path, vulnerable copy lives in the 64-bit path",
+      "vulnerability_predicate": {
+        "id": "LEGACY_DLL_PRESENT",
+        "op": "file_exists",
+        "path": "C:\\Program Files\\Acme\\legacy\\acmelegacy.dll"
+      }
+    },
+    {
+      "case_id": "D-01",
+      "fleet_size": 1,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Stop the AcmeSvc listener",
+        "target_state_assertions": [
+          {
+            "id": "ACMESVC_STOPPED",
+            "op": "service_stopped",
+            "service": "AcmeSvc"
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "Service stopped but startup type left automatic",
+      "vulnerability_predicate": {
+        "id": "ACMESVC_RUNNING",
+        "op": "service_running",
+        "service": "AcmeSvc"
+      }
+    },
+    {
+      "case_id": "D-02",
+      "fleet_size": 1,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Set the SMB1 server parameter to 0",
+        "target_state_assertions": [
+          {
+            "id": "SMB1_REG_SECURE",
+            "op": "registry_equals",
+            "path": "HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters\\SMB1",
+            "value": 0
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "Registry mitigation reverted by the group policy refresh after reboot",
+      "vulnerability_predicate": {
+        "id": "SMB1_REG_INSECURE",
+        "op": "registry_not_equals",
+        "path": "HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters\\SMB1",
+        "value": 0
+      }
+    },
+    {
+      "case_id": "D-03",
+      "fleet_size": 1,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Re-enable Network Level Authentication for RDP",
+        "target_state_assertions": [
+          {
+            "flag": "rdp_nla_disabled",
+            "id": "NLA_FLAG_CLEARED",
+            "op": "flag_equals",
+            "value": false
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "RDP NLA re-enabled at runtime, reverts on restart",
+      "vulnerability_predicate": {
+        "flag": "rdp_nla_disabled",
+        "id": "RDP_NLA_DISABLED",
+        "op": "flag_true"
+      }
+    },
+    {
+      "case_id": "D-04",
+      "fleet_size": 1,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Delete the vulnerable legacy DLL",
+        "target_state_assertions": [
+          {
+            "id": "LEGACY_DLL_GONE",
+            "op": "file_absent",
+            "path": "C:\\Program Files\\Acme\\legacy\\acmelegacy.dll"
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "Vulnerable binary deleted, recreated by a scheduled task on boot",
+      "vulnerability_predicate": {
+        "id": "LEGACY_DLL_PRESENT",
+        "op": "file_exists",
+        "path": "C:\\Program Files\\Acme\\legacy\\acmelegacy.dll"
+      }
+    },
+    {
+      "case_id": "E-01",
+      "fleet_size": 1,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Install AcmeReader 1.4.5",
+        "target_state_assertions": [
+          {
+            "id": "READER_145_PRESENT",
+            "op": "package_present",
+            "package": "AcmeReader",
+            "version": "1.4.5"
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "1.4.5 installed alongside the vulnerable 1.4.2",
+      "vulnerability_predicate": {
+        "fixed_version": "1.4.5",
+        "id": "READER_BELOW_145",
+        "op": "package_version_below",
+        "package": "AcmeReader"
+      }
+    },
+    {
+      "case_id": "E-02",
+      "fleet_size": 1,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Deploy acme.exe 1.4.5 to the current install path",
+        "target_state_assertions": [
+          {
+            "id": "CURRENT_BIN_145",
+            "op": "file_exists",
+            "path": "C:\\Program Files\\Acme\\current\\acme.exe"
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "New binary deployed, vulnerable binary left at the legacy path",
+      "vulnerability_predicate": {
+        "fixed_version": "1.4.5",
+        "id": "LEGACY_BIN_BELOW_145",
+        "op": "file_version_below",
+        "path": "C:\\Program Files\\Acme\\legacy\\acme.exe"
+      }
+    },
+    {
+      "case_id": "E-03",
+      "fleet_size": 1,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Install AcmeReader 1.4.5",
+        "target_state_assertions": [
+          {
+            "id": "READER_145_PRESENT",
+            "op": "package_present",
+            "package": "AcmeReader",
+            "version": "1.4.5"
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "Duplicate install detected: two AcmeReader builds registered",
+      "vulnerability_predicate": {
+        "fixed_version": "1.4.5",
+        "id": "READER_DUPLICATE_VULN",
+        "op": "package_duplicate_below",
+        "package": "AcmeReader"
+      }
+    },
+    {
+      "case_id": "E-04",
+      "fleet_size": 1,
+      "notes": "Silent-blindness variant: the collector reports a complete inventory that is not complete.",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Install AcmeReader 1.4.5",
+        "target_state_assertions": [
+          {
+            "id": "READER_145_PRESENT",
+            "op": "package_present",
+            "package": "AcmeReader",
+            "version": "1.4.5"
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "Side-by-side vulnerable build hidden from the inventory collector",
+      "vulnerability_predicate": {
+        "fixed_version": "1.4.5",
+        "id": "READER_BELOW_145",
+        "op": "package_version_below",
+        "package": "AcmeReader"
+      }
+    },
+    {
+      "case_id": "F-01",
+      "fleet_size": 1,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Upgrade AcmeReader to 1.4.5 (component 1 of 2)",
+        "target_state_assertions": [
+          {
+            "id": "READER_145_PRESENT",
+            "op": "package_present",
+            "package": "AcmeReader",
+            "version": "1.4.5"
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "Package upgraded, required registry mitigation never applied",
+      "vulnerability_predicate": {
+        "op": "any_of",
+        "operands": [
+          {
+            "fixed_version": "1.4.5",
+            "id": "READER_BELOW_145",
+            "op": "package_version_below",
+            "package": "AcmeReader"
+          },
+          {
+            "id": "MACRO_POLICY_INSECURE",
+            "op": "registry_not_equals",
+            "path": "HKLM\\SOFTWARE\\Policies\\Acme\\Office\\BlockMacrosFromInternet",
+            "value": 1
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "F-02",
+      "fleet_size": 1,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Install the two required security updates",
+        "target_state_assertions": [
+          {
+            "id": "KB5031234_INSTALLED",
+            "kb": "KB5031234",
+            "op": "patch_installed"
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "One of two required security updates installed",
+      "vulnerability_predicate": {
+        "op": "any_of",
+        "operands": [
+          {
+            "id": "KB5031234_MISSING",
+            "kb": "KB5031234",
+            "op": "patch_missing"
+          },
+          {
+            "id": "KB5031999_MISSING",
+            "kb": "KB5031999",
+            "op": "patch_missing"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "F-03",
+      "fleet_size": 1,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Remove both vulnerable DLL copies",
+        "target_state_assertions": [
+          {
+            "id": "DLL_A_GONE",
+            "op": "file_absent",
+            "path": "C:\\Acme\\a\\vuln.dll"
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "First vulnerable DLL removed, second removal errored",
+      "vulnerability_predicate": {
+        "op": "any_of",
+        "operands": [
+          {
+            "id": "DLL_A_PRESENT",
+            "op": "file_exists",
+            "path": "C:\\Acme\\a\\vuln.dll"
+          },
+          {
+            "id": "DLL_B_PRESENT",
+            "op": "file_exists",
+            "path": "C:\\Acme\\b\\vuln.dll"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "F-04",
+      "fleet_size": 1,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Stop and disable both vulnerable listeners",
+        "target_state_assertions": [
+          {
+            "id": "SVC1_DISABLED",
+            "op": "service_startup_is",
+            "service": "AcmeSvc",
+            "startup_type": "disabled"
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "One of two vulnerable listeners stopped",
+      "vulnerability_predicate": {
+        "op": "any_of",
+        "operands": [
+          {
+            "id": "SVC1_RUNNING",
+            "op": "service_running",
+            "service": "AcmeSvc"
+          },
+          {
+            "id": "SVC2_RUNNING",
+            "op": "service_running",
+            "service": "AcmeRelay"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "G-01",
+      "fleet_size": 10,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Upgrade AcmeReader to 1.4.5 across the targeted group",
+        "target_state_assertions": [
+          {
+            "id": "READER_145_PRESENT",
+            "op": "package_present",
+            "package": "AcmeReader",
+            "version": "1.4.5"
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "10 targeted, 3 offline and never enumerated, console reports success",
+      "vulnerability_predicate": {
+        "fixed_version": "1.4.5",
+        "id": "READER_BELOW_145",
+        "op": "package_version_below",
+        "package": "AcmeReader"
+      }
+    },
+    {
+      "case_id": "G-02",
+      "fleet_size": 12,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Upgrade AcmeReader to 1.4.5 across the targeted group",
+        "target_state_assertions": [
+          {
+            "id": "READER_145_PRESENT",
+            "op": "package_present",
+            "package": "AcmeReader",
+            "version": "1.4.5"
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "12 targeted, 9 enumerated, remaining devices unreachable",
+      "vulnerability_predicate": {
+        "fixed_version": "1.4.5",
+        "id": "READER_BELOW_145",
+        "op": "package_version_below",
+        "package": "AcmeReader"
+      }
+    },
+    {
+      "case_id": "G-03",
+      "fleet_size": 10,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Upgrade AcmeReader to 1.4.5 across the targeted group",
+        "target_state_assertions": [
+          {
+            "id": "READER_145_PRESENT",
+            "op": "package_present",
+            "package": "AcmeReader",
+            "version": "1.4.5"
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "All 10 enumerated, remediation no-opped on 3 of them",
+      "vulnerability_predicate": {
+        "fixed_version": "1.4.5",
+        "id": "READER_BELOW_145",
+        "op": "package_version_below",
+        "package": "AcmeReader"
+      }
+    },
+    {
+      "case_id": "G-04",
+      "fleet_size": 10,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Upgrade AcmeReader to 1.4.5 across the targeted group",
+        "target_state_assertions": [
+          {
+            "id": "READER_145_PRESENT",
+            "op": "package_present",
+            "package": "AcmeReader",
+            "version": "1.4.5"
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "All 10 got the new build; 2 kept the old build side-by-side",
+      "vulnerability_predicate": {
+        "fixed_version": "1.4.5",
+        "id": "READER_BELOW_145",
+        "op": "package_version_below",
+        "package": "AcmeReader"
+      }
+    },
+    {
+      "case_id": "H-01",
+      "fleet_size": 1,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Upgrade AcmeReader to 1.4.5",
+        "target_state_assertions": [
+          {
+            "id": "READER_145_PRESENT",
+            "op": "package_present",
+            "package": "AcmeReader",
+            "version": "1.4.5"
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "Upgrade fixed the CVE and broke the line-of-business app",
+      "vulnerability_predicate": {
+        "fixed_version": "1.4.5",
+        "id": "READER_BELOW_145",
+        "op": "package_version_below",
+        "package": "AcmeReader"
+      }
+    },
+    {
+      "case_id": "H-02",
+      "fleet_size": 1,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Stop and disable AcmeSvc",
+        "target_state_assertions": [
+          {
+            "id": "ACMESVC_DISABLED",
+            "op": "service_startup_is",
+            "service": "AcmeSvc",
+            "startup_type": "disabled"
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy",
+        "print_service_healthy"
+      ],
+      "title": "Disabling the spooler-adjacent service broke printing",
+      "vulnerability_predicate": {
+        "id": "ACMESVC_RUNNING",
+        "op": "service_running",
+        "service": "AcmeSvc"
+      }
+    },
+    {
+      "case_id": "H-03",
+      "fleet_size": 1,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Disable TLS 1.0 in SCHANNEL",
+        "target_state_assertions": [
+          {
+            "id": "TLS10_REG_DISABLED",
+            "op": "registry_equals",
+            "path": "HKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.0\\Enabled",
+            "value": 0
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy",
+        "vpn_client_connects"
+      ],
+      "title": "TLS 1.0 disabled; the VPN client can no longer connect",
+      "vulnerability_predicate": {
+        "id": "TLS10_ENABLED_REG",
+        "op": "registry_equals",
+        "path": "HKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.0\\Enabled",
+        "value": 1
+      }
+    },
+    {
+      "case_id": "H-04",
+      "fleet_size": 1,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Install KB5031234",
+        "target_state_assertions": [
+          {
+            "id": "KB_INSTALLED",
+            "kb": "KB5031234",
+            "op": "patch_installed"
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "Patch installed; the endpoint security agent stopped reporting",
+      "vulnerability_predicate": {
+        "id": "KB5031234_MISSING",
+        "kb": "KB5031234",
+        "op": "patch_missing"
+      }
+    },
+    {
+      "case_id": "I-01",
+      "fleet_size": 1,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Disable SMB1",
+        "target_state_assertions": [
+          {
+            "id": "SMB1_REG_SECURE",
+            "op": "registry_equals",
+            "path": "HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters\\SMB1",
+            "value": 0
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "SMB1 disabled by turning the host firewall off",
+      "vulnerability_predicate": {
+        "id": "SMB1_REG_INSECURE",
+        "op": "registry_not_equals",
+        "path": "HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters\\SMB1",
+        "value": 0
+      }
+    },
+    {
+      "case_id": "I-02",
+      "fleet_size": 1,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Install KB5031234",
+        "target_state_assertions": [
+          {
+            "id": "KB_INSTALLED",
+            "kb": "KB5031234",
+            "op": "patch_installed"
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "Patch applied after relaxing script execution policy, never restored",
+      "vulnerability_predicate": {
+        "id": "KB5031234_MISSING",
+        "kb": "KB5031234",
+        "op": "patch_missing"
+      }
+    },
+    {
+      "case_id": "I-03",
+      "fleet_size": 1,
+      "notes": "Silent-blindness variant: the new risk exists but is outside the collector's schema.",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Delete the vulnerable legacy DLL",
+        "target_state_assertions": [
+          {
+            "id": "LEGACY_DLL_GONE",
+            "op": "file_absent",
+            "path": "C:\\Program Files\\Acme\\legacy\\acmelegacy.dll"
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "Remediation added a local admin account the collector does not report",
+      "vulnerability_predicate": {
+        "id": "LEGACY_DLL_PRESENT",
+        "op": "file_exists",
+        "path": "C:\\Program Files\\Acme\\legacy\\acmelegacy.dll"
+      }
+    },
+    {
+      "case_id": "J-01",
+      "fleet_size": 1,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Install KB5031234",
+        "target_state_assertions": [
+          {
+            "id": "KB_APPLIED",
+            "op": "any_of",
+            "operands": [
+              {
+                "kb": "KB5031234",
+                "op": "patch_installed"
+              },
+              {
+                "kb": "KB5031234",
+                "op": "patch_staged"
+              }
+            ]
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "Update staged successfully; endpoint vulnerable until reboot",
+      "vulnerability_predicate": {
+        "id": "KB5031234_MISSING",
+        "kb": "KB5031234",
+        "op": "patch_missing"
+      }
+    },
+    {
+      "case_id": "J-02",
+      "fleet_size": 1,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Harden the SCHANNEL cipher suite configuration",
+        "target_state_assertions": [
+          {
+            "id": "TLS10_REG_DISABLED",
+            "op": "registry_equals",
+            "path": "HKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.0\\Enabled",
+            "value": 0
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "Cipher-suite hardening written to the registry, active only after restart",
+      "vulnerability_predicate": {
+        "flag": "legacy_cipher_active",
+        "id": "LEGACY_CIPHER_ACTIVE",
+        "op": "flag_true"
+      }
+    },
+    {
+      "case_id": "J-03",
+      "fleet_size": 1,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Install KB5040001",
+        "target_state_assertions": [
+          {
+            "id": "KB_APPLIED",
+            "op": "any_of",
+            "operands": [
+              {
+                "kb": "KB5040001",
+                "op": "patch_installed"
+              },
+              {
+                "kb": "KB5040001",
+                "op": "patch_staged"
+              }
+            ]
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "Servicing stack update staged, console shows Compliant",
+      "vulnerability_predicate": {
+        "id": "KB5040001_MISSING",
+        "kb": "KB5040001",
+        "op": "patch_missing"
+      }
+    },
+    {
+      "case_id": "K-01",
+      "fleet_size": 1,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Upgrade AcmeReader to 1.4.5",
+        "target_state_assertions": [
+          {
+            "id": "READER_145_PRESENT",
+            "op": "package_present",
+            "package": "AcmeReader",
+            "version": "1.4.5"
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "Consumer edition patched; the vulnerable Enterprise edition is a different product",
+      "vulnerability_predicate": {
+        "fixed_version": "1.4.5",
+        "id": "READER_ENT_BELOW_145",
+        "op": "package_version_below",
+        "package": "AcmeReader Enterprise"
+      }
+    },
+    {
+      "case_id": "K-02",
+      "fleet_size": 1,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Install KB5031234 as remediation for the advisory",
+        "target_state_assertions": [
+          {
+            "id": "KB5031234_INSTALLED",
+            "kb": "KB5031234",
+            "op": "patch_installed"
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "Superseded KB installed; the advisory requires a different KB",
+      "vulnerability_predicate": {
+        "id": "KB5040001_MISSING",
+        "kb": "KB5040001",
+        "op": "patch_missing"
+      }
+    },
+    {
+      "case_id": "K-03",
+      "fleet_size": 1,
+      "notes": "Silent-blindness variant: the vulnerable key is invisible to the collector, so it reads as clean.",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Disable legacy authentication",
+        "target_state_assertions": [
+          {
+            "id": "DECOY_LEGACY_AUTH_CLEARED",
+            "op": "registry_equals",
+            "path": "HKLM\\SOFTWARE\\WOW6432Node\\Policies\\Acme\\Office\\BlockMacrosFromInternet",
+            "value": 0
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "Legacy-auth key set in the wrong hive; the real key is outside collection scope",
+      "vulnerability_predicate": {
+        "id": "LEGACY_AUTH_ENABLED",
+        "op": "registry_equals",
+        "path": "HKLM\\SOFTWARE\\AcmeEnterprise\\LegacyAuthEnabled",
+        "value": 1
+      }
+    },
+    {
+      "case_id": "L-01",
+      "fleet_size": 1,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Upgrade AcmeReader to 1.4.5",
+        "target_state_assertions": [
+          {
+            "id": "READER_145_PRESENT",
+            "op": "package_present",
+            "package": "AcmeReader",
+            "version": "1.4.5"
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "Software inventory could not be collected",
+      "vulnerability_predicate": {
+        "fixed_version": "1.4.5",
+        "id": "READER_BELOW_145",
+        "op": "package_version_below",
+        "package": "AcmeReader"
+      }
+    },
+    {
+      "case_id": "L-02",
+      "fleet_size": 1,
+      "notes": "The target condition really was fixed; the point is that regression cannot be ruled out.",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Set the SMB1 server parameter to 0",
+        "target_state_assertions": [
+          {
+            "id": "SMB1_REG_SECURE",
+            "op": "registry_equals",
+            "path": "HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters\\SMB1",
+            "value": 0
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "Registry fix verified, but no smoke-test evidence could be gathered",
+      "vulnerability_predicate": {
+        "id": "SMB1_REG_INSECURE",
+        "op": "registry_not_equals",
+        "path": "HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters\\SMB1",
+        "value": 0
+      }
+    },
+    {
+      "case_id": "L-03",
+      "fleet_size": 8,
+      "notes": "",
+      "os": "windows",
+      "remediation_intent": {
+        "description": "Upgrade AcmeReader to 1.4.5 across the targeted group",
+        "target_state_assertions": [
+          {
+            "id": "READER_145_PRESENT",
+            "op": "package_present",
+            "package": "AcmeReader",
+            "version": "1.4.5"
+          }
+        ]
+      },
+      "required_health_checks": [
+        "lob_app_starts",
+        "endpoint_agent_healthy"
+      ],
+      "title": "Fleet membership could not be enumerated for a group deployment",
+      "vulnerability_predicate": {
+        "fixed_version": "1.4.5",
+        "id": "READER_BELOW_145",
+        "op": "package_version_below",
+        "package": "AcmeReader"
+      }
+    }
+  ]
+}

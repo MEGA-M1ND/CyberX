@@ -1,0 +1,107 @@
+name: CI
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  EXPERIMENT_DIR: experiments/remediation-verification-v1
+
+jobs:
+  test:
+    name: tests (py${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install test tooling
+        run: python -m pip install --upgrade pip pytest
+      - name: Confirm no third-party runtime dependencies
+        run: |
+          cd "$EXPERIMENT_DIR"
+          python - <<'EOF'
+          import pathlib, sys
+          sys.path.insert(0, "src")
+          import rvbench.runner, rvbench.analysis.report  # must import with stdlib only
+          print("stdlib-only import OK")
+          EOF
+      - name: Run test suite
+        run: |
+          cd "$EXPERIMENT_DIR"
+          pytest -q
+
+  lint:
+    name: lint and types
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --upgrade pip ruff
+      - name: ruff check
+        run: ruff check "$EXPERIMENT_DIR"
+      - name: byte-compile everything
+        run: python -m compileall -q "$EXPERIMENT_DIR"
+
+  experiment:
+    name: experiment reproducibility
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reproducibility gate (manifest hash + paired prediction passes)
+        run: |
+          cd "$EXPERIMENT_DIR"
+          python check_reproducibility.py
+      - name: Run the full experiment end to end
+        run: |
+          cd "$EXPERIMENT_DIR"
+          python run_experiment.py
+      - name: Upload result artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: experiment-results
+          path: |
+            ${{ env.EXPERIMENT_DIR }}/results/
+            ${{ env.EXPERIMENT_DIR }}/reports/
+            ${{ env.EXPERIMENT_DIR }}/cases/MANIFEST.json
+          retention-days: 30
+
+  safety:
+    name: safety boundaries
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --upgrade pip pytest
+      - name: Assert the benchmark cannot touch the host or the network
+        run: |
+          cd "$EXPERIMENT_DIR"
+          pytest -q tests/test_safety_and_llm.py tests/test_leakage.py
+      - name: Assert real-endpoint adapters stay disabled by default
+        run: |
+          cd "$EXPERIMENT_DIR"
+          test -z "${ALLOW_REAL_WINDOWS_LAB:-}" || (echo "ALLOW_REAL_WINDOWS_LAB must not be set in CI" && exit 1)
+          test -z "${RVBENCH_LLM_ENABLED:-}" || (echo "RVBENCH_LLM_ENABLED must not be set in CI" && exit 1)
+          echo "real-endpoint and LLM paths are disabled"
