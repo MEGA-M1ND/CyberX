@@ -1,0 +1,21 @@
+{
+  "experiment": "remediation-verification-v1",
+  "files": [
+    {
+      "bytes": 40151,
+      "path": "cases/public/cases.json",
+      "sha256": "6b4680117113c19875e5b41aadfe0c6ff13b005af7925e0e164f2db815a8b44d"
+    },
+    {
+      "bytes": 88962,
+      "path": "cases/simulation/scenarios.json",
+      "sha256": "193b08ba301041af03003d0dc7b0d6f2b079c849f276f5cd98822f8a67df4762"
+    },
+    {
+      "bytes": 10855,
+      "path": "cases/ground_truth/labels.json",
+      "sha256": "ba2d09f2bce88560f46d3e3700651ed47f330ab67cbfa7c8be2256fe9b220475"
+    }
+  ],
+  "manifest_sha256": "a9878fb4a3e202f47f3ccca027621e5d34358276c49da18fe454e7875db0de79"
+}

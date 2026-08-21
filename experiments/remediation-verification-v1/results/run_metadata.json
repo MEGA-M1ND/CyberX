@@ -1,0 +1,46 @@
+{
+  "case_manifest_files": [
+    {
+      "bytes": 40151,
+      "path": "cases/public/cases.json",
+      "sha256": "6b4680117113c19875e5b41aadfe0c6ff13b005af7925e0e164f2db815a8b44d"
+    },
+    {
+      "bytes": 88962,
+      "path": "cases/simulation/scenarios.json",
+      "sha256": "193b08ba301041af03003d0dc7b0d6f2b079c849f276f5cd98822f8a67df4762"
+    },
+    {
+      "bytes": 10855,
+      "path": "cases/ground_truth/labels.json",
+      "sha256": "ba2d09f2bce88560f46d3e3700651ed47f330ab67cbfa7c8be2256fe9b220475"
+    }
+  ],
+  "case_manifest_sha256": "a9878fb4a3e202f47f3ccca027621e5d34358276c49da18fe454e7875db0de79",
+  "configuration": {
+    "adapter": "SimulatedEndpointAdapter",
+    "arms": [
+      "STATUS_ONLY",
+      "TARGET_STATE",
+      "INDEPENDENT_VERIFIER"
+    ],
+    "case_count": 48,
+    "real_endpoint_adapters_enabled": false
+  },
+  "dependencies": "standard library only (no third-party runtime dependencies)",
+  "experiment_revision": "1.0.0",
+  "experiment_version": "remediation-verification-v1",
+  "git_commit_sha": "195f9e4c0dbf88c9895ad2a6f07522152ce768be",
+  "llm_model": null,
+  "llm_provider": null,
+  "platform": "Linux-6.18.44-fc-v21-x86_64-with-glibc2.39",
+  "python_version": "3.11.15",
+  "random_seed": 20260821,
+  "remediation_source": "deterministic corpus (Phase 1)",
+  "timestamp_utc": "2026-08-21T11:36:43.538231+00:00",
+  "verifier_versions": {
+    "INDEPENDENT_VERIFIER": "1.0.0",
+    "STATUS_ONLY": "1.0.0",
+    "TARGET_STATE": "1.0.0"
+  }
+}

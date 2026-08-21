@@ -6,7 +6,35 @@ write-up — including results that argue against the thesis being tested.
 
 **Safety boundary for the whole repository:** everything runs against simulators, unit
 tests, or explicitly isolated local fixtures. No scanning of third-party systems, no
-exploit code, no production or tenant changes. Any adapter that touches a real machine
-must be gated behind an explicit opt-in environment flag and default to disabled.
+exploit code, no production or tenant changes. Any future adapter that touches a real
+machine must be gated behind an explicit opt-in environment flag and default to disabled.
 
-Experiments live under `experiments/<slug>/`.
+## Experiments
+
+See [`experiment-index.md`](experiment-index.md) for the register, [`experiment-log.md`](experiment-log.md)
+for the running log, and [`findings.md`](findings.md) for accumulated conclusions.
+
+| ID | Experiment | Status | Report |
+| --- | --- | --- | --- |
+| EXP-001 | [Endpoint Remediation Verification Benchmark v1](experiments/remediation-verification-v1/) | Complete | [final-report.md](experiments/remediation-verification-v1/reports/final-report.md) |
+
+## Running an experiment
+
+```bash
+cd experiments/remediation-verification-v1
+python3 run_experiment.py
+pytest -q
+```
+
+Python 3.11+. No third-party runtime dependencies; tests require no network access.
+
+## Conventions
+
+- One directory per experiment under `experiments/<slug>/`, versioned in the slug.
+- `README.md` + `methodology.md` at the experiment root; `cases/`, `src/`, `tests/`,
+  `results/`, `reports/` beneath it.
+- Ground truth is stored separately from anything a system under test can read, and is
+  derived mechanically rather than hand-labelled wherever possible.
+- Every corpus is frozen by a SHA-256 manifest before the final run. The hash is quoted in
+  the report; changing any case invalidates the result.
+- Results artifacts are committed. Re-running must reproduce them.
