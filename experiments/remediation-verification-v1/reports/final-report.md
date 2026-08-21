@@ -1,9 +1,9 @@
 # Endpoint Remediation Verification Benchmark v1 - final report
 
 - Experiment: `remediation-verification-v1` revision `1.0.0`
-- Run (UTC): `2026-08-21T11:35:35.238063+00:00`
+- Run (UTC): `2026-08-21T11:36:43.538231+00:00`
 - Case-manifest SHA-256: **`a9878fb4a3e202f47f3ccca027621e5d34358276c49da18fe454e7875db0de79`**
-- Git commit: `unavailable`  |  Python `3.11.15`  |  seed `20260821`
+- Git commit: `195f9e4c0dbf88c9895ad2a6f07522152ce768be`  |  Python `3.11.15`  |  seed `20260821`
 - Adapter: `SimulatedEndpointAdapter` (simulation only; real-endpoint adapters disabled)
 
 ## Executive summary
@@ -114,7 +114,7 @@ The distinct mechanisms behind them:
 | New-security-risk detection | 0.0% | 0.0% | 66.7% |
 | Insufficient-evidence detection | 0.0% | 33.3% | 100.0% |
 | Fleet-partial-rollout flagged | 0.0% | 25.0% | 100.0% |
-| Mean verifier latency (ms) | 0.005 | 0.090 | 2.082 |
+| Mean verifier latency (ms) | 0.005 | 0.093 | 2.229 |
 
 Note the recall column: all three arms have high or perfect recall on `VERIFIED_REMEDIATED`. The arms differ almost entirely in **precision** - how much a claim of 'remediated' is worth. Arm A's precision is 15.6%; Arm C's is 72.7%. Arm C also never produced a false failure, which matters operationally: a verifier that cries wolf gets switched off.
 
