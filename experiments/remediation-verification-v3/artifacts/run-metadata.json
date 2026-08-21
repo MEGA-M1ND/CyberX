@@ -1,0 +1,32 @@
+{
+  "blocked_reason": "this is Linux, not Windows; no disposable Windows lab VM is reachable from this session",
+  "classifications_sha256": "b3cb11c6ba9227a3f3761df8b764f1fd36c403580326230ab0449094d717dbd0",
+  "collector_contracts_sha256": "38e9ba1c10c38c4c53d8204cff9167a8cfa84b199dadd4863293b928a1fb0f4f",
+  "commands": [
+    "python3 run_experiment.py",
+    "python3 check_reproducibility.py",
+    "pytest -q",
+    "ruff check ."
+  ],
+  "dependencies": "Python standard library only; no third-party runtime dependencies",
+  "experiment": "remediation-verification-v3",
+  "experiment_revision": "3.0.0",
+  "fixture_manifest_sha256": "49f5e7ab95f521f58618970cc04423c9e0e2d0316bdaab7d32bfdf10e5578b38",
+  "fixture_specifications_sha256": "5f9a2142c6849ffddcbac4d97ec6c1b92a69ef17c3bf7147d37505a3c85198f9",
+  "gates": {
+    "ALLOW_REAL_WINDOWS_LAB": "required for any real collection",
+    "ALLOW_WINDOWS_FIXTURE_SETUP": "required for provisioning",
+    "RV3_LAB_CONFIRMATION": "must equal the target machine's hostname"
+  },
+  "generation_config_sha256": "357713831864d763a93f7c54ea9115e0176fc222286a69a4c8fa5e95d487affe",
+  "git_commit_sha": "9a240f7168f867486a6b8ced11bf0a966481eade",
+  "measurement_status": "PREDICTED_FROM_CONTRACTS",
+  "mode": "DRY_RUN",
+  "network_access_required": false,
+  "platform": "Linux-6.18.44-fc-v21-x86_64-with-glibc2.39",
+  "provisioning_plan_sha256": "875991010578a5731424dce9a2a500e4b7e796437b0bb13b508be5c0866de4be",
+  "python_version": "3.11.15",
+  "real_collection_performed": false,
+  "run_status": "BLOCKED_NOT_EXECUTED",
+  "timestamp_utc": "2026-08-21T14:39:19.078517+00:00"
+}

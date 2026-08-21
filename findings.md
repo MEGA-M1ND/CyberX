@@ -122,3 +122,68 @@ claims verification.
 **Implication:** any verification benchmark must state both, plus the abstention rate, or the
 choice of metric silently chooses the conclusion. v1's single "false-safe rate" over all cases
 would have hidden this.
+
+---
+
+## F-009 — The gap between a blind collector and an honest one is about ten lines of code
+**Source:** EXP-003 (contract analysis; **not measured**) · **Confidence:** low — untested against a real machine
+
+Two collectors in this experiment share a mechanism: both enumerate uninstall registry keys. The
+first reads one hive in one view and presents the result as a complete software inventory. The
+second reads both registry views, walks loaded `HKU` hives, cross-references `ProfileList`, and
+reports the profiles whose hives it could not read. Against the same 40 fixtures the first is
+predicted to silently miss 8 decisive facts and the second none — not because it sees more, but
+because it declines to claim what it has not checked.
+
+**Implication, and it cuts against the startup thesis:** if the fix for undeclared collection gaps
+is a ten-line patch to a PowerShell script, then knowing to apply it is not a defensible product.
+Whatever value exists has to be in reconciliation, in deciding which additional query is worth its
+cost, or in the audit artefact — not in the collection logic itself.
+
+---
+
+## F-010 — Evidence diversity has to be mechanism diversity
+**Source:** EXP-003 (contract analysis; **not measured**) · **Confidence:** low-medium
+
+Cross-collector rescue came in at 63.2% (120/190), below the 80% the decision rule asks for, and
+the reason is correlated failure. Three of the five passive channels are registry enumerations:
+they fail on the same fixtures — per-user installs, second-user installs, anything with no package
+record — because they ask the same subsystem the same question. The only channel that fails
+independently is the filesystem/version one, because it queries something else entirely.
+
+**Implication:** "we aggregate your existing inventory feeds" is not a second channel. Aggregating
+three registry-derived inventories yields one registry-derived inventory. A genuine second opinion
+requires running a different mechanism, which means either an agent or a management platform
+willing to run your script — both harder businesses than an integration.
+
+---
+
+## F-011 — Claiming completeness for nothing is not the same as seeing everything
+**Source:** EXP-003 (methodological) · **Confidence:** high
+
+The composite collector scores zero silent misses. That is definitional, not a capability: it
+claims completeness for no evidence type, so a fact it cannot reach is classified as a declared
+gap by construction. Any collector can achieve a perfect undeclared-gap rate by declining to claim
+anything.
+
+The metric that resists this is the share of decisive facts left unresolved, where the composite
+still leaves 4 of 48 — two unloaded user hives (unreachable read-only, since `reg load` mutates
+the registry namespace) and two application-health facts (no Windows inventory channel models
+them). This is the same denominator trap v2's F-008 identified, appearing in a new place: **any
+metric conditioned on a claim can be gamed by withdrawing the claim.**
+
+---
+
+## F-012 — No Windows inventory channel can tell you whether the fix broke the application
+**Source:** EXP-003 (contract analysis) · **Confidence:** medium — structural, not statistical
+
+Two fixtures break a dependent line-of-business application. None of the ten collector contracts —
+including the composite — models application health, so the decisive fact is a declared gap for
+every channel. The decision-rule criterion "no regression fixture incorrectly blessed" is met, but
+only because everyone abstains.
+
+**Implication:** a verification layer built on Windows inventory evidence can establish that a
+vulnerability is gone and cannot establish that the endpoint still works. v1 already showed that a
+fix which breaks a required application is not a successful remediation. Answering that half of
+the question needs a different evidence source entirely — synthetic transactions, application
+telemetry, or a health probe — and nothing in the standard inventory surface provides it.

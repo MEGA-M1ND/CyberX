@@ -1,0 +1,1360 @@
+{
+  "cleanup_operations": [
+    {
+      "args": {
+        "delete_key": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_contosoreader64",
+        "hive": "HKLM",
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-7af4297781e54e73",
+      "op": "write_registry_value"
+    },
+    {
+      "args": {
+        "delete_key": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_fabrikamsync64",
+        "hive": "HKLM",
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-4e4bfc84f6513bea",
+      "op": "write_registry_value"
+    },
+    {
+      "args": {
+        "delete_key": "SOFTWARE\\WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_fabrikamsync32",
+        "hive": "HKLM",
+        "view": "Registry32"
+      },
+      "fixture_id": "fx-01812717b5791792",
+      "op": "write_registry_value"
+    },
+    {
+      "args": {
+        "delete_key": "SOFTWARE\\WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_northwindagent32",
+        "hive": "HKLM",
+        "view": "Registry32"
+      },
+      "fixture_id": "fx-aab83b7701794b16",
+      "op": "write_registry_value"
+    },
+    {
+      "args": {
+        "delete_key": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_northwindagentuser",
+        "hive": "HKCU",
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-514d93ae61272984",
+      "op": "write_registry_value"
+    },
+    {
+      "args": {
+        "delete_key": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_tailspinvieweruser",
+        "hive": "HKCU",
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-82c8f58d82cf730c",
+      "op": "write_registry_value"
+    },
+    {
+      "args": {
+        "remove": "rv3lab_second0"
+      },
+      "fixture_id": "fx-da63098dbc5ef8b4",
+      "op": "new_local_user"
+    },
+    {
+      "args": {
+        "remove": "rv3lab_second1"
+      },
+      "fixture_id": "fx-832cb05b91aec9ad",
+      "op": "new_local_user"
+    },
+    {
+      "args": {
+        "remove": "C:\\RV3Lab\\portable"
+      },
+      "fixture_id": "fx-2aa82c0c4f0adc7b",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "remove": "C:\\RV3Lab\\portable"
+      },
+      "fixture_id": "fx-659708370168100e",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "delete_key": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_fabrikamsyncfixed",
+        "hive": "HKLM",
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-98219082d60ab1ac",
+      "op": "write_registry_value"
+    },
+    {
+      "args": {
+        "delete_key": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_northwindagentfixed",
+        "hive": "HKLM",
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-8c9a6b6d56429b3e",
+      "op": "write_registry_value"
+    },
+    {
+      "args": {
+        "delete_key": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_northwindagentbump",
+        "hive": "HKLM",
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-22f06ce61945f20f",
+      "op": "write_registry_value"
+    },
+    {
+      "args": {
+        "delete_key": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_tailspinviewerbump",
+        "hive": "HKLM",
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-b26e432ba5006e48",
+      "op": "write_registry_value"
+    },
+    {
+      "args": {
+        "remove": "C:\\RV3Lab\\odd"
+      },
+      "fixture_id": "fx-bc4a51729bf38bab",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "remove": "C:\\RV3Lab\\odd"
+      },
+      "fixture_id": "fx-401b79ee677bc995",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "delete_key": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_contosoreaderupd",
+        "hive": "HKLM",
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-d251418b544cdbab",
+      "op": "write_registry_value"
+    },
+    {
+      "args": {
+        "delete_key": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_fabrikamsyncupd",
+        "hive": "HKLM",
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-ec3d6bf536bb5d65",
+      "op": "write_registry_value"
+    },
+    {
+      "args": {
+        "remove": "RV3Lab_svc0"
+      },
+      "fixture_id": "fx-5399cd9fd17d3dbf",
+      "op": "new_service"
+    },
+    {
+      "args": {
+        "remove": "RV3Lab_restart0"
+      },
+      "fixture_id": "fx-5399cd9fd17d3dbf",
+      "op": "new_scheduled_task"
+    },
+    {
+      "args": {
+        "remove": "RV3Lab_svc1"
+      },
+      "fixture_id": "fx-39a5010b9588ad25",
+      "op": "new_service"
+    },
+    {
+      "args": {
+        "remove": "RV3Lab_restart1"
+      },
+      "fixture_id": "fx-39a5010b9588ad25",
+      "op": "new_scheduled_task"
+    },
+    {
+      "args": {
+        "remove": "RV3Lab_auto0"
+      },
+      "fixture_id": "fx-2bd9a8f9c2cce53d",
+      "op": "new_service"
+    },
+    {
+      "args": {
+        "remove": "RV3Lab_auto1"
+      },
+      "fixture_id": "fx-065929083d4ec51a",
+      "op": "new_service"
+    },
+    {
+      "args": {
+        "remove": "RV3Lab_recreate0"
+      },
+      "fixture_id": "fx-c0ce97aa41f8d7af",
+      "op": "new_scheduled_task"
+    },
+    {
+      "args": {
+        "remove": "RV3Lab_recreate1"
+      },
+      "fixture_id": "fx-3a5954b175ce89f1",
+      "op": "new_scheduled_task"
+    },
+    {
+      "args": {
+        "delete_key": "SOFTWARE\\RV3Lab\\Policy0",
+        "hive": "HKLM",
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-3637be0b35f5ae90",
+      "op": "write_registry_value"
+    },
+    {
+      "args": {
+        "delete_key": "SOFTWARE\\WOW6432Node\\RV3Lab\\Policy0",
+        "hive": "HKLM",
+        "view": "Registry32"
+      },
+      "fixture_id": "fx-3637be0b35f5ae90",
+      "op": "write_registry_value"
+    },
+    {
+      "args": {
+        "delete_key": "SOFTWARE\\RV3Lab\\Policy1",
+        "hive": "HKLM",
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-1603910eaba2d7e7",
+      "op": "write_registry_value"
+    },
+    {
+      "args": {
+        "delete_key": "SOFTWARE\\WOW6432Node\\RV3Lab\\Policy1",
+        "hive": "HKLM",
+        "view": "Registry32"
+      },
+      "fixture_id": "fx-1603910eaba2d7e7",
+      "op": "write_registry_value"
+    },
+    {
+      "args": {
+        "remove": "rv3lab_offline0"
+      },
+      "fixture_id": "fx-6b982ad56d8ea88a",
+      "op": "new_local_user"
+    },
+    {
+      "args": {
+        "remove": "rv3lab_offline1"
+      },
+      "fixture_id": "fx-e6a1b4cd0faf1471",
+      "op": "new_local_user"
+    },
+    {
+      "args": {
+        "remove": "C:\\RV3Lab\\restricted\\tailspinviewer"
+      },
+      "fixture_id": "fx-03fc102009ea0b6a",
+      "op": "deny_read_acl"
+    },
+    {
+      "args": {
+        "remove": "C:\\RV3Lab\\restricted\\contosoreader"
+      },
+      "fixture_id": "fx-5186606fd6667a86",
+      "op": "deny_read_acl"
+    },
+    {
+      "args": {
+        "remove": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_contosoreaderstale"
+      },
+      "fixture_id": "fx-a89a080a02e7caa3",
+      "op": "touch_inventory_cache"
+    },
+    {
+      "args": {
+        "remove": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_fabrikamsyncstale"
+      },
+      "fixture_id": "fx-53b36d3a61cec1e8",
+      "op": "touch_inventory_cache"
+    },
+    {
+      "args": {
+        "delete_key": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_fabrikamsyncnofile",
+        "hive": "HKLM",
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-3ea9f4f5871319a1",
+      "op": "write_registry_value"
+    },
+    {
+      "args": {
+        "delete_key": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_northwindagentnofile",
+        "hive": "HKLM",
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-a112cb2a626b275c",
+      "op": "write_registry_value"
+    },
+    {
+      "args": {
+        "remove": "C:\\RV3Lab\\unregistered\\northwindagent"
+      },
+      "fixture_id": "fx-30bd9ca355f74c4f",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "remove": "C:\\RV3Lab\\unregistered\\tailspinviewer"
+      },
+      "fixture_id": "fx-7e993ab9d1beace1",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "delete_key": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_tailspinviewerscope",
+        "hive": "HKLM",
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-8e578b8bb474c4d0",
+      "op": "write_registry_value"
+    },
+    {
+      "args": {
+        "delete_key": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_contosoreaderscope",
+        "hive": "HKLM",
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-deb17a35d5976d29",
+      "op": "write_registry_value"
+    },
+    {
+      "args": {
+        "delete_key": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_contosoreaderconflict",
+        "hive": "HKLM",
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-ccd8a796e056a97e",
+      "op": "write_registry_value"
+    },
+    {
+      "args": {
+        "delete_key": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_fabrikamsyncconflict",
+        "hive": "HKLM",
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-9b184e95a0802464",
+      "op": "write_registry_value"
+    }
+  ],
+  "experiment": "remediation-verification-v3",
+  "operation_count": 114,
+  "operations": [
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\machine64\\contosoreader"
+      },
+      "fixture_id": "fx-7af4297781e54e73",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "dest": "C:\\RV3Lab\\machine64\\contosoreader\\contosoreader.exe",
+        "source": "C:\\Windows\\System32\\notepad.exe"
+      },
+      "fixture_id": "fx-7af4297781e54e73",
+      "op": "place_stub_binary"
+    },
+    {
+      "args": {
+        "display_name": "Contoso Reader",
+        "display_version": "1.4.2",
+        "hive": "HKLM",
+        "install_location": "C:\\RV3Lab\\machine64\\contosoreader",
+        "key": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_contosoreader64",
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-7af4297781e54e73",
+      "op": "new_arp_entry"
+    },
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\machine64\\fabrikamsync"
+      },
+      "fixture_id": "fx-4e4bfc84f6513bea",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "dest": "C:\\RV3Lab\\machine64\\fabrikamsync\\fabrikamsync.exe",
+        "source": "C:\\Windows\\System32\\notepad.exe"
+      },
+      "fixture_id": "fx-4e4bfc84f6513bea",
+      "op": "place_stub_binary"
+    },
+    {
+      "args": {
+        "display_name": "Fabrikam Sync",
+        "display_version": "1.4.2",
+        "hive": "HKLM",
+        "install_location": "C:\\RV3Lab\\machine64\\fabrikamsync",
+        "key": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_fabrikamsync64",
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-4e4bfc84f6513bea",
+      "op": "new_arp_entry"
+    },
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\machine32\\fabrikamsync"
+      },
+      "fixture_id": "fx-01812717b5791792",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "dest": "C:\\RV3Lab\\machine32\\fabrikamsync\\fabrikamsync.exe",
+        "source": "C:\\Windows\\System32\\notepad.exe"
+      },
+      "fixture_id": "fx-01812717b5791792",
+      "op": "place_stub_binary"
+    },
+    {
+      "args": {
+        "display_name": "Fabrikam Sync",
+        "display_version": "1.4.2",
+        "hive": "HKLM",
+        "install_location": "C:\\RV3Lab\\machine32\\fabrikamsync",
+        "key": "SOFTWARE\\WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_fabrikamsync32",
+        "view": "Registry32"
+      },
+      "fixture_id": "fx-01812717b5791792",
+      "op": "new_arp_entry"
+    },
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\machine32\\northwindagent"
+      },
+      "fixture_id": "fx-aab83b7701794b16",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "dest": "C:\\RV3Lab\\machine32\\northwindagent\\northwindagent.exe",
+        "source": "C:\\Windows\\System32\\notepad.exe"
+      },
+      "fixture_id": "fx-aab83b7701794b16",
+      "op": "place_stub_binary"
+    },
+    {
+      "args": {
+        "display_name": "Northwind Agent",
+        "display_version": "1.4.2",
+        "hive": "HKLM",
+        "install_location": "C:\\RV3Lab\\machine32\\northwindagent",
+        "key": "SOFTWARE\\WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_northwindagent32",
+        "view": "Registry32"
+      },
+      "fixture_id": "fx-aab83b7701794b16",
+      "op": "new_arp_entry"
+    },
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\peruser\\northwindagent"
+      },
+      "fixture_id": "fx-514d93ae61272984",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "dest": "C:\\RV3Lab\\peruser\\northwindagent\\northwindagent.exe",
+        "source": "C:\\Windows\\System32\\notepad.exe"
+      },
+      "fixture_id": "fx-514d93ae61272984",
+      "op": "place_stub_binary"
+    },
+    {
+      "args": {
+        "display_name": "Northwind Agent",
+        "display_version": "1.4.2",
+        "hive": "HKCU",
+        "install_location": "C:\\RV3Lab\\peruser\\northwindagent",
+        "key": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_northwindagentuser",
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-514d93ae61272984",
+      "op": "new_arp_entry"
+    },
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\peruser\\tailspinviewer"
+      },
+      "fixture_id": "fx-82c8f58d82cf730c",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "dest": "C:\\RV3Lab\\peruser\\tailspinviewer\\tailspinviewer.exe",
+        "source": "C:\\Windows\\System32\\notepad.exe"
+      },
+      "fixture_id": "fx-82c8f58d82cf730c",
+      "op": "place_stub_binary"
+    },
+    {
+      "args": {
+        "display_name": "Tailspin Viewer",
+        "display_version": "1.4.2",
+        "hive": "HKCU",
+        "install_location": "C:\\RV3Lab\\peruser\\tailspinviewer",
+        "key": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_tailspinvieweruser",
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-82c8f58d82cf730c",
+      "op": "new_arp_entry"
+    },
+    {
+      "args": {
+        "name": "rv3lab_second0"
+      },
+      "fixture_id": "fx-da63098dbc5ef8b4",
+      "op": "new_local_user"
+    },
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\otheruser\\tailspinviewer"
+      },
+      "fixture_id": "fx-da63098dbc5ef8b4",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "display_name": "Tailspin Viewer",
+        "display_version": "1.4.2",
+        "hive": "HKU",
+        "key": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_tailspinviewerother",
+        "user": "rv3lab_second0",
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-da63098dbc5ef8b4",
+      "op": "new_arp_entry"
+    },
+    {
+      "args": {
+        "name": "rv3lab_second1"
+      },
+      "fixture_id": "fx-832cb05b91aec9ad",
+      "op": "new_local_user"
+    },
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\otheruser\\contosoreader"
+      },
+      "fixture_id": "fx-832cb05b91aec9ad",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "display_name": "Contoso Reader",
+        "display_version": "1.4.2",
+        "hive": "HKU",
+        "key": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_contosoreaderother",
+        "user": "rv3lab_second1",
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-832cb05b91aec9ad",
+      "op": "new_arp_entry"
+    },
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\portable"
+      },
+      "fixture_id": "fx-2aa82c0c4f0adc7b",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "dest": "C:\\RV3Lab\\portable\\contosoreader-portable.exe",
+        "label": "1.4.2",
+        "source": "C:\\Windows\\System32\\notepad.exe"
+      },
+      "fixture_id": "fx-2aa82c0c4f0adc7b",
+      "op": "place_stub_binary"
+    },
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\portable"
+      },
+      "fixture_id": "fx-659708370168100e",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "dest": "C:\\RV3Lab\\portable\\fabrikamsync-portable.exe",
+        "label": "1.4.2",
+        "source": "C:\\Windows\\System32\\notepad.exe"
+      },
+      "fixture_id": "fx-659708370168100e",
+      "op": "place_stub_binary"
+    },
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\sxs\\fabrikamsync\\v142"
+      },
+      "fixture_id": "fx-98219082d60ab1ac",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\sxs\\fabrikamsync\\v145"
+      },
+      "fixture_id": "fx-98219082d60ab1ac",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "dest": "C:\\RV3Lab\\sxs\\fabrikamsync\\v142\\fabrikamsync.exe",
+        "label": "1.4.2",
+        "source": "C:\\Windows\\System32\\notepad.exe"
+      },
+      "fixture_id": "fx-98219082d60ab1ac",
+      "op": "place_stub_binary"
+    },
+    {
+      "args": {
+        "dest": "C:\\RV3Lab\\sxs\\fabrikamsync\\v145\\fabrikamsync.exe",
+        "label": "1.4.5",
+        "source": "C:\\Windows\\System32\\notepad.exe"
+      },
+      "fixture_id": "fx-98219082d60ab1ac",
+      "op": "place_stub_binary"
+    },
+    {
+      "args": {
+        "display_name": "Fabrikam Sync",
+        "display_version": "1.4.5",
+        "hive": "HKLM",
+        "key": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_fabrikamsyncfixed",
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-98219082d60ab1ac",
+      "op": "new_arp_entry"
+    },
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\sxs\\northwindagent\\v142"
+      },
+      "fixture_id": "fx-8c9a6b6d56429b3e",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\sxs\\northwindagent\\v145"
+      },
+      "fixture_id": "fx-8c9a6b6d56429b3e",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "dest": "C:\\RV3Lab\\sxs\\northwindagent\\v142\\northwindagent.exe",
+        "label": "1.4.2",
+        "source": "C:\\Windows\\System32\\notepad.exe"
+      },
+      "fixture_id": "fx-8c9a6b6d56429b3e",
+      "op": "place_stub_binary"
+    },
+    {
+      "args": {
+        "dest": "C:\\RV3Lab\\sxs\\northwindagent\\v145\\northwindagent.exe",
+        "label": "1.4.5",
+        "source": "C:\\Windows\\System32\\notepad.exe"
+      },
+      "fixture_id": "fx-8c9a6b6d56429b3e",
+      "op": "place_stub_binary"
+    },
+    {
+      "args": {
+        "display_name": "Northwind Agent",
+        "display_version": "1.4.5",
+        "hive": "HKLM",
+        "key": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_northwindagentfixed",
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-8c9a6b6d56429b3e",
+      "op": "new_arp_entry"
+    },
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\bumped\\northwindagent"
+      },
+      "fixture_id": "fx-22f06ce61945f20f",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "dest": "C:\\RV3Lab\\bumped\\northwindagent\\northwindagent.exe",
+        "label": "1.4.2",
+        "source": "C:\\Windows\\System32\\notepad.exe"
+      },
+      "fixture_id": "fx-22f06ce61945f20f",
+      "op": "place_stub_binary"
+    },
+    {
+      "args": {
+        "display_name": "Northwind Agent",
+        "display_version": "1.4.5",
+        "hive": "HKLM",
+        "install_location": "C:\\RV3Lab\\bumped\\northwindagent",
+        "key": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_northwindagentbump",
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-22f06ce61945f20f",
+      "op": "new_arp_entry"
+    },
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\bumped\\tailspinviewer"
+      },
+      "fixture_id": "fx-b26e432ba5006e48",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "dest": "C:\\RV3Lab\\bumped\\tailspinviewer\\tailspinviewer.exe",
+        "label": "1.4.2",
+        "source": "C:\\Windows\\System32\\notepad.exe"
+      },
+      "fixture_id": "fx-b26e432ba5006e48",
+      "op": "place_stub_binary"
+    },
+    {
+      "args": {
+        "display_name": "Tailspin Viewer",
+        "display_version": "1.4.5",
+        "hive": "HKLM",
+        "install_location": "C:\\RV3Lab\\bumped\\tailspinviewer",
+        "key": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_tailspinviewerbump",
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-b26e432ba5006e48",
+      "op": "new_arp_entry"
+    },
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\odd"
+      },
+      "fixture_id": "fx-bc4a51729bf38bab",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "dest": "C:\\RV3Lab\\odd\\svc-helper-0.exe",
+        "label": "1.4.2",
+        "source": "C:\\Windows\\System32\\notepad.exe"
+      },
+      "fixture_id": "fx-bc4a51729bf38bab",
+      "op": "place_stub_binary"
+    },
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\odd"
+      },
+      "fixture_id": "fx-401b79ee677bc995",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "dest": "C:\\RV3Lab\\odd\\svc-helper-1.exe",
+        "label": "1.4.2",
+        "source": "C:\\Windows\\System32\\notepad.exe"
+      },
+      "fixture_id": "fx-401b79ee677bc995",
+      "op": "place_stub_binary"
+    },
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\residual\\contosoreader\\old"
+      },
+      "fixture_id": "fx-d251418b544cdbab",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\residual\\contosoreader\\current"
+      },
+      "fixture_id": "fx-d251418b544cdbab",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "dest": "C:\\RV3Lab\\residual\\contosoreader\\old\\contosoreader.exe",
+        "label": "1.4.2",
+        "source": "C:\\Windows\\System32\\notepad.exe"
+      },
+      "fixture_id": "fx-d251418b544cdbab",
+      "op": "place_stub_binary"
+    },
+    {
+      "args": {
+        "dest": "C:\\RV3Lab\\residual\\contosoreader\\current\\contosoreader.exe",
+        "label": "1.4.5",
+        "source": "C:\\Windows\\System32\\notepad.exe"
+      },
+      "fixture_id": "fx-d251418b544cdbab",
+      "op": "place_stub_binary"
+    },
+    {
+      "args": {
+        "display_name": "Contoso Reader",
+        "display_version": "1.4.5",
+        "hive": "HKLM",
+        "install_location": "C:\\RV3Lab\\residual\\contosoreader\\current",
+        "key": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_contosoreaderupd",
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-d251418b544cdbab",
+      "op": "new_arp_entry"
+    },
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\residual\\fabrikamsync\\old"
+      },
+      "fixture_id": "fx-ec3d6bf536bb5d65",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\residual\\fabrikamsync\\current"
+      },
+      "fixture_id": "fx-ec3d6bf536bb5d65",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "dest": "C:\\RV3Lab\\residual\\fabrikamsync\\old\\fabrikamsync.exe",
+        "label": "1.4.2",
+        "source": "C:\\Windows\\System32\\notepad.exe"
+      },
+      "fixture_id": "fx-ec3d6bf536bb5d65",
+      "op": "place_stub_binary"
+    },
+    {
+      "args": {
+        "dest": "C:\\RV3Lab\\residual\\fabrikamsync\\current\\fabrikamsync.exe",
+        "label": "1.4.5",
+        "source": "C:\\Windows\\System32\\notepad.exe"
+      },
+      "fixture_id": "fx-ec3d6bf536bb5d65",
+      "op": "place_stub_binary"
+    },
+    {
+      "args": {
+        "display_name": "Fabrikam Sync",
+        "display_version": "1.4.5",
+        "hive": "HKLM",
+        "install_location": "C:\\RV3Lab\\residual\\fabrikamsync\\current",
+        "key": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_fabrikamsyncupd",
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-ec3d6bf536bb5d65",
+      "op": "new_arp_entry"
+    },
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\services"
+      },
+      "fixture_id": "fx-5399cd9fd17d3dbf",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "dest": "C:\\RV3Lab\\services\\fabrikamsyncsvc.exe",
+        "source": "C:\\Windows\\System32\\notepad.exe"
+      },
+      "fixture_id": "fx-5399cd9fd17d3dbf",
+      "op": "place_stub_binary"
+    },
+    {
+      "args": {
+        "binary": "C:\\RV3Lab\\services\\fabrikamsyncsvc.exe",
+        "name": "RV3Lab_svc0",
+        "startup": "Manual",
+        "state": "Stopped"
+      },
+      "fixture_id": "fx-5399cd9fd17d3dbf",
+      "op": "new_service"
+    },
+    {
+      "args": {
+        "action": "C:\\RV3Lab\\services\\fabrikamsyncsvc.exe",
+        "name": "RV3Lab_restart0",
+        "trigger": "AtStartup"
+      },
+      "fixture_id": "fx-5399cd9fd17d3dbf",
+      "op": "new_scheduled_task"
+    },
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\services"
+      },
+      "fixture_id": "fx-39a5010b9588ad25",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "dest": "C:\\RV3Lab\\services\\northwindagentsvc.exe",
+        "source": "C:\\Windows\\System32\\notepad.exe"
+      },
+      "fixture_id": "fx-39a5010b9588ad25",
+      "op": "place_stub_binary"
+    },
+    {
+      "args": {
+        "binary": "C:\\RV3Lab\\services\\northwindagentsvc.exe",
+        "name": "RV3Lab_svc1",
+        "startup": "Manual",
+        "state": "Stopped"
+      },
+      "fixture_id": "fx-39a5010b9588ad25",
+      "op": "new_service"
+    },
+    {
+      "args": {
+        "action": "C:\\RV3Lab\\services\\northwindagentsvc.exe",
+        "name": "RV3Lab_restart1",
+        "trigger": "AtStartup"
+      },
+      "fixture_id": "fx-39a5010b9588ad25",
+      "op": "new_scheduled_task"
+    },
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\services"
+      },
+      "fixture_id": "fx-2bd9a8f9c2cce53d",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "dest": "C:\\RV3Lab\\services\\auto0.exe",
+        "source": "C:\\Windows\\System32\\notepad.exe"
+      },
+      "fixture_id": "fx-2bd9a8f9c2cce53d",
+      "op": "place_stub_binary"
+    },
+    {
+      "args": {
+        "binary": "C:\\RV3Lab\\services\\auto0.exe",
+        "name": "RV3Lab_auto0",
+        "startup": "Automatic",
+        "state": "Stopped"
+      },
+      "fixture_id": "fx-2bd9a8f9c2cce53d",
+      "op": "new_service"
+    },
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\services"
+      },
+      "fixture_id": "fx-065929083d4ec51a",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "dest": "C:\\RV3Lab\\services\\auto1.exe",
+        "source": "C:\\Windows\\System32\\notepad.exe"
+      },
+      "fixture_id": "fx-065929083d4ec51a",
+      "op": "place_stub_binary"
+    },
+    {
+      "args": {
+        "binary": "C:\\RV3Lab\\services\\auto1.exe",
+        "name": "RV3Lab_auto1",
+        "startup": "Automatic",
+        "state": "Stopped"
+      },
+      "fixture_id": "fx-065929083d4ec51a",
+      "op": "new_service"
+    },
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\recreated"
+      },
+      "fixture_id": "fx-c0ce97aa41f8d7af",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "action": "C:\\RV3Lab\\recreated\\component0.exe",
+        "name": "RV3Lab_recreate0",
+        "trigger": "AtLogon"
+      },
+      "fixture_id": "fx-c0ce97aa41f8d7af",
+      "op": "new_scheduled_task"
+    },
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\recreated"
+      },
+      "fixture_id": "fx-3a5954b175ce89f1",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "action": "C:\\RV3Lab\\recreated\\component1.exe",
+        "name": "RV3Lab_recreate1",
+        "trigger": "AtLogon"
+      },
+      "fixture_id": "fx-3a5954b175ce89f1",
+      "op": "new_scheduled_task"
+    },
+    {
+      "args": {
+        "hive": "HKLM",
+        "key": "SOFTWARE\\RV3Lab\\Policy0\\Enabled",
+        "value": 1,
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-3637be0b35f5ae90",
+      "op": "write_registry_value"
+    },
+    {
+      "args": {
+        "hive": "HKLM",
+        "key": "SOFTWARE\\WOW6432Node\\RV3Lab\\Policy0\\Enabled",
+        "value": 0,
+        "view": "Registry32"
+      },
+      "fixture_id": "fx-3637be0b35f5ae90",
+      "op": "write_registry_value"
+    },
+    {
+      "args": {
+        "hive": "HKLM",
+        "key": "SOFTWARE\\RV3Lab\\Policy1\\Enabled",
+        "value": 1,
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-1603910eaba2d7e7",
+      "op": "write_registry_value"
+    },
+    {
+      "args": {
+        "hive": "HKLM",
+        "key": "SOFTWARE\\WOW6432Node\\RV3Lab\\Policy1\\Enabled",
+        "value": 0,
+        "view": "Registry32"
+      },
+      "fixture_id": "fx-1603910eaba2d7e7",
+      "op": "write_registry_value"
+    },
+    {
+      "args": {
+        "name": "rv3lab_offline0"
+      },
+      "fixture_id": "fx-6b982ad56d8ea88a",
+      "op": "new_local_user"
+    },
+    {
+      "args": {
+        "display_name": "Northwind Agent",
+        "display_version": "1.4.2",
+        "hive": "HKU",
+        "key": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_northwindagentoffline",
+        "user": "rv3lab_offline0",
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-6b982ad56d8ea88a",
+      "op": "new_arp_entry"
+    },
+    {
+      "args": {
+        "user": "rv3lab_offline0"
+      },
+      "fixture_id": "fx-6b982ad56d8ea88a",
+      "op": "unload_user_hive"
+    },
+    {
+      "args": {
+        "name": "rv3lab_offline1"
+      },
+      "fixture_id": "fx-e6a1b4cd0faf1471",
+      "op": "new_local_user"
+    },
+    {
+      "args": {
+        "display_name": "Tailspin Viewer",
+        "display_version": "1.4.2",
+        "hive": "HKU",
+        "key": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_tailspinvieweroffline",
+        "user": "rv3lab_offline1",
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-e6a1b4cd0faf1471",
+      "op": "new_arp_entry"
+    },
+    {
+      "args": {
+        "user": "rv3lab_offline1"
+      },
+      "fixture_id": "fx-e6a1b4cd0faf1471",
+      "op": "unload_user_hive"
+    },
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\restricted\\tailspinviewer"
+      },
+      "fixture_id": "fx-03fc102009ea0b6a",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "dest": "C:\\RV3Lab\\restricted\\tailspinviewer\\tailspinviewer.exe",
+        "label": "1.4.2",
+        "source": "C:\\Windows\\System32\\notepad.exe"
+      },
+      "fixture_id": "fx-03fc102009ea0b6a",
+      "op": "place_stub_binary"
+    },
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\restricted\\tailspinviewer"
+      },
+      "fixture_id": "fx-03fc102009ea0b6a",
+      "op": "deny_read_acl"
+    },
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\restricted\\contosoreader"
+      },
+      "fixture_id": "fx-5186606fd6667a86",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "dest": "C:\\RV3Lab\\restricted\\contosoreader\\contosoreader.exe",
+        "label": "1.4.2",
+        "source": "C:\\Windows\\System32\\notepad.exe"
+      },
+      "fixture_id": "fx-5186606fd6667a86",
+      "op": "place_stub_binary"
+    },
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\restricted\\contosoreader"
+      },
+      "fixture_id": "fx-5186606fd6667a86",
+      "op": "deny_read_acl"
+    },
+    {
+      "args": {
+        "age_hours": 72,
+        "display_name": "Contoso Reader",
+        "display_version": "1.4.2",
+        "key": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_contosoreaderstale"
+      },
+      "fixture_id": "fx-a89a080a02e7caa3",
+      "op": "touch_inventory_cache"
+    },
+    {
+      "args": {
+        "age_hours": 72,
+        "display_name": "Fabrikam Sync",
+        "display_version": "1.4.2",
+        "key": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_fabrikamsyncstale"
+      },
+      "fixture_id": "fx-53b36d3a61cec1e8",
+      "op": "touch_inventory_cache"
+    },
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\nofile\\fabrikamsync"
+      },
+      "fixture_id": "fx-3ea9f4f5871319a1",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "display_name": "Fabrikam Sync",
+        "display_version": "1.4.2",
+        "hive": "HKLM",
+        "install_location": "C:\\RV3Lab\\nofile\\fabrikamsync",
+        "key": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_fabrikamsyncnofile",
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-3ea9f4f5871319a1",
+      "op": "new_arp_entry"
+    },
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\nofile\\northwindagent"
+      },
+      "fixture_id": "fx-a112cb2a626b275c",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "display_name": "Northwind Agent",
+        "display_version": "1.4.2",
+        "hive": "HKLM",
+        "install_location": "C:\\RV3Lab\\nofile\\northwindagent",
+        "key": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_northwindagentnofile",
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-a112cb2a626b275c",
+      "op": "new_arp_entry"
+    },
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\unregistered\\northwindagent"
+      },
+      "fixture_id": "fx-30bd9ca355f74c4f",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "dest": "C:\\RV3Lab\\unregistered\\northwindagent\\northwindagent.exe",
+        "label": "1.4.2",
+        "source": "C:\\Windows\\System32\\notepad.exe"
+      },
+      "fixture_id": "fx-30bd9ca355f74c4f",
+      "op": "place_stub_binary"
+    },
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\unregistered\\tailspinviewer"
+      },
+      "fixture_id": "fx-7e993ab9d1beace1",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "dest": "C:\\RV3Lab\\unregistered\\tailspinviewer\\tailspinviewer.exe",
+        "label": "1.4.2",
+        "source": "C:\\Windows\\System32\\notepad.exe"
+      },
+      "fixture_id": "fx-7e993ab9d1beace1",
+      "op": "place_stub_binary"
+    },
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\scoped\\tailspinviewer"
+      },
+      "fixture_id": "fx-8e578b8bb474c4d0",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "dest": "C:\\RV3Lab\\scoped\\tailspinviewer\\tailspinviewer.exe",
+        "label": "1.4.2",
+        "source": "C:\\Windows\\System32\\notepad.exe"
+      },
+      "fixture_id": "fx-8e578b8bb474c4d0",
+      "op": "place_stub_binary"
+    },
+    {
+      "args": {
+        "display_name": "Tailspin Viewer",
+        "display_version": "1.4.2",
+        "hive": "HKLM",
+        "key": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_tailspinviewerscope",
+        "package_kind": "appx",
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-8e578b8bb474c4d0",
+      "op": "new_arp_entry"
+    },
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\scoped\\contosoreader"
+      },
+      "fixture_id": "fx-deb17a35d5976d29",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "dest": "C:\\RV3Lab\\scoped\\contosoreader\\contosoreader.exe",
+        "label": "1.4.2",
+        "source": "C:\\Windows\\System32\\notepad.exe"
+      },
+      "fixture_id": "fx-deb17a35d5976d29",
+      "op": "place_stub_binary"
+    },
+    {
+      "args": {
+        "display_name": "Contoso Reader",
+        "display_version": "1.4.2",
+        "hive": "HKLM",
+        "key": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_contosoreaderscope",
+        "package_kind": "appx",
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-deb17a35d5976d29",
+      "op": "new_arp_entry"
+    },
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\conflict\\contosoreader"
+      },
+      "fixture_id": "fx-ccd8a796e056a97e",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "dest": "C:\\RV3Lab\\conflict\\contosoreader\\contosoreader.exe",
+        "label": "1.4.2",
+        "source": "C:\\Windows\\System32\\notepad.exe"
+      },
+      "fixture_id": "fx-ccd8a796e056a97e",
+      "op": "place_stub_binary"
+    },
+    {
+      "args": {
+        "display_name": "Contoso Reader",
+        "display_version": "1.4.5",
+        "hive": "HKLM",
+        "install_location": "C:\\RV3Lab\\conflict\\contosoreader",
+        "key": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_contosoreaderconflict",
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-ccd8a796e056a97e",
+      "op": "new_arp_entry"
+    },
+    {
+      "args": {
+        "path": "C:\\RV3Lab\\conflict\\fabrikamsync"
+      },
+      "fixture_id": "fx-9b184e95a0802464",
+      "op": "new_directory"
+    },
+    {
+      "args": {
+        "dest": "C:\\RV3Lab\\conflict\\fabrikamsync\\fabrikamsync.exe",
+        "label": "1.4.2",
+        "source": "C:\\Windows\\System32\\notepad.exe"
+      },
+      "fixture_id": "fx-9b184e95a0802464",
+      "op": "place_stub_binary"
+    },
+    {
+      "args": {
+        "display_name": "Fabrikam Sync",
+        "display_version": "1.4.5",
+        "hive": "HKLM",
+        "install_location": "C:\\RV3Lab\\conflict\\fabrikamsync",
+        "key": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\RV3Lab_fabrikamsyncconflict",
+        "view": "Registry64"
+      },
+      "fixture_id": "fx-9b184e95a0802464",
+      "op": "new_arp_entry"
+    }
+  ],
+  "plan_sha256": "875991010578a5731424dce9a2a500e4b7e796437b0bb13b508be5c0866de4be",
+  "warning": "Applying this plan WRITES to the target machine. Disposable lab VM only."
+}

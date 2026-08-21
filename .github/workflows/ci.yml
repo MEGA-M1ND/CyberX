@@ -16,6 +16,7 @@ concurrency:
 env:
   V1_DIR: experiments/remediation-verification-v1
   V2_DIR: experiments/remediation-verification-v2
+  V3_DIR: experiments/remediation-verification-v3
 
 jobs:
   test:
@@ -46,6 +47,12 @@ jobs:
           import rv2.bench.run, rv2.analysis.reports  # must import with stdlib only
           print("v2 stdlib-only import OK")
           EOF
+          cd "$GITHUB_WORKSPACE/$V3_DIR" && python - <<'EOF'
+          import sys
+          sys.path.insert(0, "src")
+          import rv3.runner, rv3.analysis.reports  # must import with stdlib only
+          print("v3 stdlib-only import OK")
+          EOF
       - name: Run v1 test suite (regression guard)
         run: |
           cd "$V1_DIR"
@@ -53,6 +60,10 @@ jobs:
       - name: Run v2 test suite
         run: |
           cd "$V2_DIR"
+          pytest -q
+      - name: Run v3 test suite
+        run: |
+          cd "$V3_DIR"
           pytest -q
 
   lint:
@@ -68,10 +79,12 @@ jobs:
         run: |
           ruff check "$V1_DIR"
           ruff check "$V2_DIR"
+          ruff check "$V3_DIR"
       - name: byte-compile everything
         run: |
           python -m compileall -q "$V1_DIR"
           python -m compileall -q "$V2_DIR"
+          python -m compileall -q "$V3_DIR"
 
   experiment:
     name: experiment reproducibility
@@ -98,6 +111,16 @@ jobs:
         run: |
           cd "$V2_DIR"
           python check_reproducibility.py
+      - name: v3 end to end (must self-block on a non-Windows runner)
+        run: |
+          cd "$V3_DIR"
+          python run_experiment.py | tee /tmp/v3.log
+          grep -q "BLOCKED_NOT_EXECUTED" /tmp/v3.log
+          echo "v3 correctly refused to run real Windows collection on this runner"
+      - name: v3 reproducibility gate (fixture manifest + two classification passes)
+        run: |
+          cd "$V3_DIR"
+          python check_reproducibility.py
       - name: Upload result artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -109,6 +132,9 @@ jobs:
             ${{ env.V2_DIR }}/artifacts/
             ${{ env.V2_DIR }}/reports/
             ${{ env.V2_DIR }}/manifests/
+            ${{ env.V3_DIR }}/artifacts/
+            ${{ env.V3_DIR }}/reports/
+            ${{ env.V3_DIR }}/manifests/
           retention-days: 30
 
   safety:
@@ -128,8 +154,14 @@ jobs:
         run: |
           cd "$V2_DIR"
           pytest -q tests/test_safety.py tests/test_layering.py
+      - name: v3 - assert real Windows collection is unreachable and scripts are read-only
+        run: |
+          cd "$V3_DIR"
+          pytest -q tests/test_safety_gates.py tests/test_powershell_readonly.py tests/test_isolation.py
       - name: Assert real-endpoint adapters stay disabled by default
         run: |
           test -z "${ALLOW_REAL_WINDOWS_LAB:-}" || (echo "ALLOW_REAL_WINDOWS_LAB must not be set in CI" && exit 1)
+          test -z "${ALLOW_WINDOWS_FIXTURE_SETUP:-}" || (echo "ALLOW_WINDOWS_FIXTURE_SETUP must not be set in CI" && exit 1)
+          test -z "${RV3_LAB_CONFIRMATION:-}" || (echo "RV3_LAB_CONFIRMATION must not be set in CI" && exit 1)
           test -z "${RVBENCH_LLM_ENABLED:-}" || (echo "RVBENCH_LLM_ENABLED must not be set in CI" && exit 1)
-          echo "real-endpoint and LLM paths are disabled"
+          echo "real-endpoint, real-Windows and LLM paths are all disabled"

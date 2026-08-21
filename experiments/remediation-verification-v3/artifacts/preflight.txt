@@ -1,0 +1,43 @@
+========================================================================
+  REMEDIATION VERIFICATION v3 - PREFLIGHT
+========================================================================
+
+  TARGET MACHINE
+    hostname          vm
+    platform          Linux 6.18.44-fc-v21
+    os                unknown
+    manufacturer      unknown
+    model             unknown
+    domain joined     None
+    looks like a VM   None
+    note              not Windows; VM detection and CIM identity are unavailable on this platform
+
+  GATES
+    ALLOW_WINDOWS_FIXTURE_SETUP    <unset>
+    ALLOW_REAL_WINDOWS_LAB         <unset>
+    RV3_LAB_CONFIRMATION           <unset>
+
+  ACTIONS THAT WOULD BE PERFORMED
+     1. CREATE 40 lab fixtures under C:\RV3Lab, HKLM/HKCU\SOFTWARE\RV3Lab, ARP keys prefixed RV3Lab_, services and scheduled tasks prefixed RV3Lab_, and disposable local accounts prefixed rv3lab_ (WRITES to this machine)
+     2. RUN read-only collector A_UNINSTALL_REGISTRY
+     3. RUN read-only collector B_EXPANDED_REGISTRY
+     4. RUN read-only collector C_PACKAGE_PROVIDER
+     5. RUN read-only collector D_FILE_VERSION
+     6. RUN read-only collector E_SERVICE_TASK
+     7. RUN read-only collector F_COMPOSITE_ACTIVE
+     8. RUN read-only collector X_INTUNE_EXPORT
+     9. RUN read-only collector X_DEFENDER_EXPORT
+    10. RUN read-only collector X_TENABLE_EXPORT
+    11. RUN read-only collector X_SCCM_EXPORT
+    12. REMOVE every fixture created above (WRITES to this machine)
+    13. WRITE collector output to the experiment's artifacts directory
+
+  CONFIRMATION REQUIRED
+    Set RV3_LAB_CONFIRMATION to this machine's own hostname ('vm') to confirm it is the disposable lab VM.
+    Never run this against a host machine, a corporate endpoint, a production
+    tenant, or any machine you are not prepared to discard.
+
+  RESULT
+    BLOCKED_NOT_EXECUTED - this is Linux, not Windows; no disposable Windows lab VM is reachable from this session
+
+========================================================================

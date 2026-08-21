@@ -135,3 +135,80 @@ in the verifier.
 known-state Windows lab image. Falsifier: if undeclared gaps exceed roughly a third of all gaps,
 the v2 defence is not worth building. Gated behind `ALLOW_REAL_WINDOWS_LAB=1`, read-only signals
 only, disposable VM, no tenant integration.
+
+---
+
+## 2026-08-21 — EXP-003 — Remediation Verification v3 — **BLOCKED_NOT_EXECUTED**
+
+**Hypothesis.** v2 ended with one number deciding the thesis: how often is a real Windows
+collector wrong about its own scope, rather than merely narrow? H1: common inventory sources
+contain material undeclared gaps for per-user, side-by-side, portable and non-default-path
+installations. H2: an independent filesystem/version channel recovers a majority of decisive
+package-inventory gaps. H3: a composite active collector reduces decisive undeclared gaps by ≥80%
+versus the best single passive collector. H4: cross-collector disagreement is a useful trigger for
+abstention or active collection. H5: reliable verification needs targeted collection, not an
+exhaustive scan.
+
+**What happened.** The measurement was not taken. This session runs on Linux with no hypervisor,
+no PowerShell, and both safety gates unset, so no disposable Windows VM was reachable. Per the
+brief's instruction for exactly this case, the harness was built and tested in dry-run mode and
+the outcome is recorded as `BLOCKED_NOT_EXECUTED`. **No hypothesis was tested and no result is
+claimed.**
+
+**What was built.** Forty deterministic fixtures across the twenty required families, each
+declaring its decisive evidence at explicit coordinates (registry view, hive, user scope, package
+provider, filesystem root class) plus expected vulnerability, persistence and regression state, a
+fixture hash and a cleanup procedure. Six read-only PowerShell collectors with machine-readable
+scope contracts, a composite active collector with a bounded widening step, four import-only
+vendor-export adapters, a three-gate safety model, a preflight that resolves machine identity and
+prints every planned action, a prefix-based cleanup script, and a reproducibility gate.
+
+**Methodology of the fallback.** With no machine to measure, each (fixture, decisive fact,
+collector) triple was classified by deduction from the collector's declared scope: a fact outside
+reach on a channel that claims completeness for that evidence type is an undeclared gap; outside
+reach on a channel that claims nothing is a declared gap. That is a deduction from documented
+behaviour, not an observation, and it is labelled `PREDICTED_FROM_CONTRACTS` in every artefact and
+at the head of every report.
+
+**Predicted figures (not results).** 480 classifications across 40 fixtures × 10 contracts.
+Decisive undeclared-gap rate: uninstall-registry script 50.0% (8/16 of the facts it claims),
+`Get-Package` 25.0% (4/16), expanded-registry / file-version / composite 0 silent misses (they
+claim completeness for nothing), service/task 0.0% (0/8) with a claim its mechanism supports.
+Vendor-export models 12.5%–37.5%. Cross-collector rescue 63.2% (120/190). Active-request success
+10/14. Remaining false assurance after composite collection 0/30, with 4 of 48 decisive facts left
+unresolved.
+
+**Decision rule.** **WITHHELD.** The rule classifies a measurement. The contract analysis alone
+would imply MIXED SIGNAL (4 of 5 criteria), failing on cross-collector rescue at 63.2% against an
+80% bar.
+
+**Limitations.** The headline is a deduction from contracts written by the same author as the
+collectors that satisfy them, and nothing checks the implementation against a real machine. The
+composite's zero silent misses is definitional — a collector claiming completeness for nothing
+cannot produce a silent miss — so the denominator-stable companion metric (unresolved decisive
+facts, 4/48) is the honest one. Four of ten contracts are unverified models of vendor
+documentation. Fixture prevalence is invented: twenty families in equal numbers is not a fleet,
+and the frequency of awkward installation patterns, not the gap rate, decides whether any of this
+matters. Fixtures use copies of one Microsoft binary with clean version metadata, which is the
+friendliest possible case for the file-version channel that the recovery story depends on.
+
+**What the analysis did establish.** Two things that are checkable and did not need a VM. First,
+the difference between a collector that produces silent misses and one that does not is about ten
+lines of PowerShell — collectors A and B share a mechanism and differ only in reading both
+registry views, walking loaded `HKU`, cross-referencing `ProfileList`, and reporting the profiles
+they could not read. Second, collector failures are correlated by mechanism: the three
+package-inventory channels fail on the same fixtures, so evidence diversity has to be *mechanism*
+diversity, and aggregating three registry-derived inventories yields one registry-derived
+inventory.
+
+**Startup thesis: unchanged and better specified.** No evidence was added in either direction.
+The analysis narrows what a positive result could look like — if the fix for silent misses is a
+ten-line patch any management vendor can ship, the defensible position cannot be knowing to read
+both registry views. What might survive is the reconciliation layer, the bounded active request,
+and the audit artefact; all three are unproven.
+
+**Next experiment.** Run this harness on a disposable Windows VM. The most valuable output is not
+the metrics but the prediction-versus-measurement diff, which names every contract that reality
+contradicts. After that: measure the prevalence of awkward installation patterns on a real fleet,
+test the file-version channel against real vendor binaries rather than one clean Microsoft
+executable, and measure the true cost of a widened filesystem scan on a populated machine.

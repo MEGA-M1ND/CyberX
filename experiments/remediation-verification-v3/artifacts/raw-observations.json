@@ -1,0 +1,46 @@
+{
+  "blocked_reason": "this is Linux, not Windows; no disposable Windows lab VM is reachable from this session",
+  "measurement_status": "PREDICTED_FROM_CONTRACTS",
+  "note": "No collector was executed, so there are no raw observations. The classifications in gap-classifications.csv were deduced from collector contracts.",
+  "observations": {},
+  "preflight": {
+    "actions": [
+      "CREATE 40 lab fixtures under C:\\RV3Lab, HKLM/HKCU\\SOFTWARE\\RV3Lab, ARP keys prefixed RV3Lab_, services and scheduled tasks prefixed RV3Lab_, and disposable local accounts prefixed rv3lab_ (WRITES to this machine)",
+      "RUN read-only collector A_UNINSTALL_REGISTRY",
+      "RUN read-only collector B_EXPANDED_REGISTRY",
+      "RUN read-only collector C_PACKAGE_PROVIDER",
+      "RUN read-only collector D_FILE_VERSION",
+      "RUN read-only collector E_SERVICE_TASK",
+      "RUN read-only collector F_COMPOSITE_ACTIVE",
+      "RUN read-only collector X_INTUNE_EXPORT",
+      "RUN read-only collector X_DEFENDER_EXPORT",
+      "RUN read-only collector X_TENABLE_EXPORT",
+      "RUN read-only collector X_SCCM_EXPORT",
+      "REMOVE every fixture created above (WRITES to this machine)",
+      "WRITE collector output to the experiment's artifacts directory"
+    ],
+    "blocked_reason": "this is Linux, not Windows; no disposable Windows lab VM is reachable from this session",
+    "gates": {
+      "ALLOW_REAL_WINDOWS_LAB": "<unset>",
+      "ALLOW_WINDOWS_FIXTURE_SETUP": "<unset>",
+      "RV3_LAB_CONFIRMATION": "<unset>",
+      "hostname": "vm",
+      "platform": "Linux"
+    },
+    "identity": {
+      "detection_note": "not Windows; VM detection and CIM identity are unavailable on this platform",
+      "domain_joined": null,
+      "hostname": "vm",
+      "looks_like_vm": null,
+      "machine": "x86_64",
+      "manufacturer": "unknown",
+      "model": "unknown",
+      "os_caption": "unknown",
+      "platform_release": "6.18.44-fc-v21",
+      "platform_system": "Linux",
+      "platform_version": "#1 SMP PREEMPT_DYNAMIC @0"
+    },
+    "may_proceed": false
+  },
+  "run_status": "BLOCKED_NOT_EXECUTED"
+}
