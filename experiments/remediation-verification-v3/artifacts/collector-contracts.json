@@ -1,0 +1,430 @@
+{
+  "contracts": [
+    {
+      "approximate_records": 180,
+      "approximate_seconds": 0.8,
+      "basis": "IMPLEMENTED_IN_THIS_REPOSITORY",
+      "can_widen_scope_on_request": false,
+      "claims_complete_for": [
+        "PACKAGE_INVENTORY"
+      ],
+      "collector_id": "A_UNINSTALL_REGISTRY",
+      "declared_exclusions": [],
+      "description": "Standard uninstall-registry enumeration - the script every estate has",
+      "emits_timestamps": true,
+      "evidence_types": [
+        "PACKAGE_INVENTORY"
+      ],
+      "hives": [
+        "HKLM"
+      ],
+      "mechanism": "Get-ChildItem HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall (64-bit view)",
+      "notes": "Represents the common field script. Claims a complete software inventory while reading one hive in one view.",
+      "path_roots": [],
+      "providers": [
+        "arp_machine"
+      ],
+      "reads_only": true,
+      "registry_views": [
+        "Registry64"
+      ],
+      "reports_collection_failures": true,
+      "requires_elevation": false,
+      "user_scopes": [
+        "machine"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "approximate_records": 420,
+      "approximate_seconds": 3.5,
+      "basis": "IMPLEMENTED_IN_THIS_REPOSITORY",
+      "can_widen_scope_on_request": false,
+      "claims_complete_for": [],
+      "collector_id": "B_EXPANDED_REGISTRY",
+      "declared_exclusions": [
+        "other_user_offline",
+        "none_portable",
+        "appx",
+        "msu_package"
+      ],
+      "description": "Expanded registry enumeration across both views and every loaded user hive",
+      "emits_timestamps": true,
+      "evidence_types": [
+        "PACKAGE_INVENTORY",
+        "REGISTRY_VALUE"
+      ],
+      "hives": [
+        "HKLM",
+        "HKCU",
+        "HKU"
+      ],
+      "mechanism": "RegistryKey.OpenBaseKey per view over HKLM and HKCU, plus enumeration of loaded HKU SIDs cross-referenced against ProfileList",
+      "notes": "Same family of mechanism as A, with the exclusions written down. The difference in honesty costs about ten lines of PowerShell.",
+      "path_roots": [],
+      "providers": [
+        "arp_machine",
+        "arp_wow6432",
+        "arp_user"
+      ],
+      "reads_only": true,
+      "registry_views": [
+        "Registry64",
+        "Registry32"
+      ],
+      "reports_collection_failures": true,
+      "requires_elevation": false,
+      "user_scopes": [
+        "machine",
+        "current_user",
+        "other_user_loaded"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "approximate_records": 210,
+      "approximate_seconds": 6.0,
+      "basis": "IMPLEMENTED_IN_THIS_REPOSITORY",
+      "can_widen_scope_on_request": false,
+      "claims_complete_for": [
+        "PACKAGE_INVENTORY"
+      ],
+      "collector_id": "C_PACKAGE_PROVIDER",
+      "declared_exclusions": [],
+      "description": "PowerShell PackageManagement inventory (Programs provider)",
+      "emits_timestamps": true,
+      "evidence_types": [
+        "PACKAGE_INVENTORY"
+      ],
+      "hives": [
+        "HKLM",
+        "HKCU"
+      ],
+      "mechanism": "Get-Package -ProviderName Programs. Never Win32_Product.",
+      "notes": "Output is routinely treated as the software inventory, which is the completeness claim modelled here.",
+      "path_roots": [],
+      "providers": [
+        "arp_machine",
+        "arp_wow6432",
+        "arp_user"
+      ],
+      "reads_only": true,
+      "registry_views": [
+        "Registry64",
+        "Registry32"
+      ],
+      "reports_collection_failures": true,
+      "requires_elevation": false,
+      "user_scopes": [
+        "machine",
+        "current_user"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "approximate_records": 1400,
+      "approximate_seconds": 22.0,
+      "basis": "IMPLEMENTED_IN_THIS_REPOSITORY",
+      "can_widen_scope_on_request": true,
+      "claims_complete_for": [],
+      "collector_id": "D_FILE_VERSION",
+      "declared_exclusions": [
+        "UserProfile",
+        "AppDataLocal",
+        "NonStandard"
+      ],
+      "description": "Targeted filesystem and file-version inspection",
+      "emits_timestamps": true,
+      "evidence_types": [
+        "FILE_PRESENCE",
+        "FILE_VERSION"
+      ],
+      "hives": [],
+      "mechanism": "Get-ChildItem over a declared root list, then FileVersionInfo per match",
+      "notes": "Cannot claim completeness by construction: it only knows about the roots it was given. That limitation is also what makes it honest.",
+      "path_roots": [
+        "ProgramFiles",
+        "ProgramFilesX86",
+        "ProgramData"
+      ],
+      "providers": [],
+      "reads_only": true,
+      "registry_views": [],
+      "reports_collection_failures": true,
+      "requires_elevation": false,
+      "user_scopes": [
+        "machine",
+        "current_user",
+        "other_user_loaded",
+        "other_user_offline"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "approximate_records": 310,
+      "approximate_seconds": 4.5,
+      "basis": "IMPLEMENTED_IN_THIS_REPOSITORY",
+      "can_widen_scope_on_request": false,
+      "claims_complete_for": [
+        "SERVICE_STATE",
+        "SCHEDULED_TASK",
+        "PERSISTENCE_STATE"
+      ],
+      "collector_id": "E_SERVICE_TASK",
+      "declared_exclusions": [],
+      "description": "Service and scheduled-task inspection",
+      "emits_timestamps": true,
+      "evidence_types": [
+        "SERVICE_STATE",
+        "SCHEDULED_TASK",
+        "PERSISTENCE_STATE"
+      ],
+      "hives": [],
+      "mechanism": "Get-Service plus Get-ScheduledTask / Get-ScheduledTaskInfo",
+      "notes": "The one channel whose completeness claim its mechanism can actually support: both enumerations are genuinely exhaustive at machine scope.",
+      "path_roots": [],
+      "providers": [],
+      "reads_only": true,
+      "registry_views": [],
+      "reports_collection_failures": true,
+      "requires_elevation": false,
+      "user_scopes": [
+        "machine",
+        "current_user"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "approximate_records": 2100,
+      "approximate_seconds": 48.0,
+      "basis": "IMPLEMENTED_IN_THIS_REPOSITORY",
+      "can_widen_scope_on_request": true,
+      "claims_complete_for": [],
+      "collector_id": "F_COMPOSITE_ACTIVE",
+      "declared_exclusions": [
+        "other_user_offline"
+      ],
+      "description": "Composite active collector: A-E plus bounded targeted follow-up",
+      "emits_timestamps": true,
+      "evidence_types": [
+        "PACKAGE_INVENTORY",
+        "REGISTRY_VALUE",
+        "FILE_PRESENCE",
+        "FILE_VERSION",
+        "SERVICE_STATE",
+        "SCHEDULED_TASK",
+        "PERSISTENCE_STATE"
+      ],
+      "hives": [
+        "HKLM",
+        "HKCU",
+        "HKU"
+      ],
+      "mechanism": "Runs the registry, package, file and service channels, reconciles them, and re-queries widened file roots or specific hives when a decisive fact is unresolved",
+      "notes": "Union of the implemented channels. Claims nothing complete: it reports per-fact resolution and names what it could not settle.",
+      "path_roots": [
+        "ProgramFiles",
+        "ProgramFilesX86",
+        "ProgramData",
+        "UserProfile",
+        "AppDataLocal",
+        "NonStandard"
+      ],
+      "providers": [
+        "arp_machine",
+        "arp_wow6432",
+        "arp_user",
+        "appx",
+        "msu_package",
+        "none_portable"
+      ],
+      "reads_only": true,
+      "registry_views": [
+        "Registry64",
+        "Registry32"
+      ],
+      "reports_collection_failures": true,
+      "requires_elevation": true,
+      "user_scopes": [
+        "machine",
+        "current_user",
+        "other_user_loaded"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "approximate_records": 300,
+      "approximate_seconds": 0.2,
+      "basis": "MODEL_OF_VENDOR_DOCUMENTATION_UNVERIFIED",
+      "can_widen_scope_on_request": false,
+      "claims_complete_for": [
+        "PACKAGE_INVENTORY"
+      ],
+      "collector_id": "X_DEFENDER_EXPORT",
+      "declared_exclusions": [],
+      "description": "Defender Vulnerability Management software-inventory export (offline)",
+      "emits_timestamps": true,
+      "evidence_types": [
+        "PACKAGE_INVENTORY",
+        "FILE_VERSION"
+      ],
+      "hives": [
+        "HKLM",
+        "HKCU"
+      ],
+      "mechanism": "Import of an exported software inventory / vulnerable-software report",
+      "notes": "Broader than an ARP read, still product-recognition driven: an unrecognised or renamed binary outside a known product is not inventory.",
+      "path_roots": [
+        "ProgramFiles",
+        "ProgramFilesX86"
+      ],
+      "providers": [
+        "arp_machine",
+        "arp_wow6432",
+        "arp_user",
+        "appx"
+      ],
+      "reads_only": true,
+      "registry_views": [
+        "Registry64",
+        "Registry32"
+      ],
+      "reports_collection_failures": true,
+      "requires_elevation": false,
+      "user_scopes": [
+        "machine",
+        "current_user"
+      ],
+      "version": "0.1.0"
+    },
+    {
+      "approximate_records": 260,
+      "approximate_seconds": 0.2,
+      "basis": "MODEL_OF_VENDOR_DOCUMENTATION_UNVERIFIED",
+      "can_widen_scope_on_request": false,
+      "claims_complete_for": [
+        "PACKAGE_INVENTORY"
+      ],
+      "collector_id": "X_INTUNE_EXPORT",
+      "declared_exclusions": [],
+      "description": "Intune discovered-apps export (offline CSV/JSON only)",
+      "emits_timestamps": true,
+      "evidence_types": [
+        "PACKAGE_INVENTORY"
+      ],
+      "hives": [
+        "HKLM",
+        "HKCU"
+      ],
+      "mechanism": "Import of an exported discovered-applications report",
+      "notes": "Presented to operators as the device's application inventory. No file version evidence and no arbitrary-path visibility.",
+      "path_roots": [],
+      "providers": [
+        "arp_machine",
+        "arp_wow6432",
+        "arp_user",
+        "appx"
+      ],
+      "reads_only": true,
+      "registry_views": [
+        "Registry64",
+        "Registry32"
+      ],
+      "reports_collection_failures": true,
+      "requires_elevation": false,
+      "user_scopes": [
+        "machine",
+        "current_user"
+      ],
+      "version": "0.1.0"
+    },
+    {
+      "approximate_records": 280,
+      "approximate_seconds": 0.2,
+      "basis": "MODEL_OF_VENDOR_DOCUMENTATION_UNVERIFIED",
+      "can_widen_scope_on_request": false,
+      "claims_complete_for": [
+        "PACKAGE_INVENTORY"
+      ],
+      "collector_id": "X_SCCM_EXPORT",
+      "declared_exclusions": [],
+      "description": "Configuration Manager hardware/software inventory export (offline)",
+      "emits_timestamps": true,
+      "evidence_types": [
+        "PACKAGE_INVENTORY",
+        "FILE_VERSION"
+      ],
+      "hives": [
+        "HKLM"
+      ],
+      "mechanism": "Import of an exported inventory class report",
+      "notes": "Software inventory is opt-in per file spec; per-user installs are absent from the default classes.",
+      "path_roots": [
+        "ProgramFiles",
+        "ProgramFilesX86"
+      ],
+      "providers": [
+        "arp_machine",
+        "arp_wow6432"
+      ],
+      "reads_only": true,
+      "registry_views": [
+        "Registry64",
+        "Registry32"
+      ],
+      "reports_collection_failures": true,
+      "requires_elevation": false,
+      "user_scopes": [
+        "machine"
+      ],
+      "version": "0.1.0"
+    },
+    {
+      "approximate_records": 340,
+      "approximate_seconds": 0.2,
+      "basis": "MODEL_OF_VENDOR_DOCUMENTATION_UNVERIFIED",
+      "can_widen_scope_on_request": false,
+      "claims_complete_for": [
+        "PACKAGE_INVENTORY"
+      ],
+      "collector_id": "X_TENABLE_EXPORT",
+      "declared_exclusions": [],
+      "description": "Tenable credentialed-scan export (offline)",
+      "emits_timestamps": true,
+      "evidence_types": [
+        "PACKAGE_INVENTORY",
+        "REGISTRY_VALUE",
+        "FILE_VERSION"
+      ],
+      "hives": [
+        "HKLM",
+        "HKCU"
+      ],
+      "mechanism": "Import of an exported credentialed scan result",
+      "notes": "Plugin-driven: checks the paths its plugins know about, which is wide but not arbitrary.",
+      "path_roots": [
+        "ProgramFiles",
+        "ProgramFilesX86",
+        "ProgramData"
+      ],
+      "providers": [
+        "arp_machine",
+        "arp_wow6432",
+        "arp_user"
+      ],
+      "reads_only": true,
+      "registry_views": [
+        "Registry64",
+        "Registry32"
+      ],
+      "reports_collection_failures": true,
+      "requires_elevation": true,
+      "user_scopes": [
+        "machine",
+        "current_user"
+      ],
+      "version": "0.1.0"
+    }
+  ],
+  "note": "Contracts marked MODEL_OF_VENDOR_DOCUMENTATION_UNVERIFIED have no implementation behind them and are the weakest evidence in this experiment."
+}

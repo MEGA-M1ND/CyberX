@@ -17,12 +17,13 @@ for the running log, and [`findings.md`](findings.md) for accumulated conclusion
 | ID | Experiment | Status | Report |
 | --- | --- | --- | --- |
 | EXP-001 | [Endpoint Remediation Verification Benchmark v1](experiments/remediation-verification-v1/) | Complete (frozen) | [final-report.md](experiments/remediation-verification-v1/reports/final-report.md) |
-| EXP-002 | [Remediation Verification v2 — Evidence Completeness and Fail-Closed Verification](experiments/remediation-verification-v2/) | Complete | [final-report.md](experiments/remediation-verification-v2/reports/final-report.md) |
+| EXP-002 | [Remediation Verification v2 — Evidence Completeness and Fail-Closed Verification](experiments/remediation-verification-v2/) | Complete (frozen) | [final-report.md](experiments/remediation-verification-v2/reports/final-report.md) |
+| EXP-003 | [Remediation Verification v3 — Real Windows Collector Blindness](experiments/remediation-verification-v3/) | **BLOCKED_NOT_EXECUTED** — harness complete, no lab VM reachable | [final-report.md](experiments/remediation-verification-v3/reports/final-report.md) |
 
 ## Running an experiment
 
 ```bash
-cd experiments/remediation-verification-v2   # or -v1
+cd experiments/remediation-verification-v3   # or -v2, -v1
 python3 run_experiment.py
 python3 check_reproducibility.py
 pytest -q

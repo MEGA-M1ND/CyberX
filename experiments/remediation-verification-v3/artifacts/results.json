@@ -1,0 +1,2077 @@
+{
+  "decision_rule": {
+    "classification": "WITHHELD",
+    "classification_note": "Withheld. The decision rule classifies a measurement, and no measurement was taken. The predicted classification below is what the contract analysis implies and must not be reported as a result.",
+    "criteria": {
+      "bounded_cost": {
+        "detail": "composite estimated at 48s against 1s for the cheapest passive channel. These are contract estimates, not measurements; a real recursive scan of a populated Program Files is minutes.",
+        "met": true
+      },
+      "composite_reduction_80": {
+        "detail": "the comparison is ambiguous and the ambiguity decides the answer. Against the ubiquitous uninstall-registry script the reduction is 100.0% (8 silent misses to 0); against an expanded registry enumeration that declares its exclusions the reduction is undefined, because that collector already has zero silent misses - while deciding only 12 of 40 fixtures against the composite's 36.",
+        "met": true
+      },
+      "fixture_residual_5": {
+        "detail": "composite fixture-level undeclared-gap rate 0.0% (0/40); residual false assurance on vulnerable fixtures 0.0% (0/30).",
+        "met": true
+      },
+      "no_harm_blessed": {
+        "detail": "regression fixtures blessed 0.0% (0/2) - but for an unflattering reason: no collector models application health at all, so the fact is a declared gap for every channel and the verifier abstains rather than detects.",
+        "met": true
+      },
+      "rescue_80": {
+        "detail": "cross-collector rescue 63.2% (120/190), below the 80% bar. The channels that fail together share a mechanism: three of the five are registry enumerations.",
+        "met": false
+      }
+    },
+    "criteria_met": 4,
+    "criteria_total": 5,
+    "predicted_classification": "MIXED SIGNAL"
+  },
+  "results": {
+    "active_request_success_rate": {
+      "denominator": 14,
+      "denominator_meaning": "decisive facts unresolved by the passive union that a widening could reach",
+      "detail": {
+        "unsatisfiable": [
+          [
+            "fx-39a5010b9588ad25",
+            "dependent_app_health"
+          ],
+          [
+            "fx-6b982ad56d8ea88a",
+            "offline_hive_entry"
+          ],
+          [
+            "fx-deb17a35d5976d29",
+            "scoped_app_health"
+          ],
+          [
+            "fx-e6a1b4cd0faf1471",
+            "offline_hive_entry"
+          ]
+        ]
+      },
+      "numerator": 10,
+      "numerator_meaning": "scope-widening requests the composite collector can satisfy",
+      "value": 0.7142857142857143
+    },
+    "best_single_passive_collector": "B_EXPANDED_REGISTRY",
+    "best_single_passive_selected_by": "most fixtures fully decided",
+    "best_single_passive_undeclared_gap_rate": null,
+    "blocked_reason": "this is Linux, not Windows; no disposable Windows lab VM is reachable from this session",
+    "breakdowns": {
+      "by_evidence_type": {
+        "APPLICATION_HEALTH": {
+          "claimed_in_scope": 0,
+          "facts": 10,
+          "gap_classes": {
+            "DECLARED_GAP": 10
+          },
+          "resolved": 0,
+          "undeclared_gap_rate": null,
+          "undeclared_gaps": 0
+        },
+        "FILE_PRESENCE": {
+          "claimed_in_scope": 0,
+          "facts": 10,
+          "gap_classes": {
+            "DECLARED_GAP": 8,
+            "NONE": 2
+          },
+          "resolved": 2,
+          "undeclared_gap_rate": null,
+          "undeclared_gaps": 0
+        },
+        "FILE_VERSION": {
+          "claimed_in_scope": 0,
+          "facts": 90,
+          "gap_classes": {
+            "COLLECTION_ERROR": 10,
+            "DECLARED_GAP": 70,
+            "NONE": 10
+          },
+          "resolved": 10,
+          "undeclared_gap_rate": null,
+          "undeclared_gaps": 0
+        },
+        "PACKAGE_INVENTORY": {
+          "claimed_in_scope": 32,
+          "facts": 80,
+          "gap_classes": {
+            "COLLECTION_ERROR": 10,
+            "DECLARED_GAP": 30,
+            "NONE": 28,
+            "UNDECLARED_GAP": 12
+          },
+          "resolved": 28,
+          "undeclared_gap_rate": 0.375,
+          "undeclared_gaps": 12
+        },
+        "PERSISTENCE_STATE": {
+          "claimed_in_scope": 2,
+          "facts": 10,
+          "gap_classes": {
+            "DECLARED_GAP": 8,
+            "NONE": 2
+          },
+          "resolved": 2,
+          "undeclared_gap_rate": 0.0,
+          "undeclared_gaps": 0
+        },
+        "REGISTRY_VALUE": {
+          "claimed_in_scope": 0,
+          "facts": 10,
+          "gap_classes": {
+            "DECLARED_GAP": 8,
+            "NONE": 2
+          },
+          "resolved": 2,
+          "undeclared_gap_rate": null,
+          "undeclared_gaps": 0
+        },
+        "SCHEDULED_TASK": {
+          "claimed_in_scope": 4,
+          "facts": 20,
+          "gap_classes": {
+            "DECLARED_GAP": 16,
+            "NONE": 4
+          },
+          "resolved": 4,
+          "undeclared_gap_rate": 0.0,
+          "undeclared_gaps": 0
+        },
+        "SERVICE_STATE": {
+          "claimed_in_scope": 2,
+          "facts": 10,
+          "gap_classes": {
+            "DECLARED_GAP": 8,
+            "NONE": 2
+          },
+          "resolved": 2,
+          "undeclared_gap_rate": 0.0,
+          "undeclared_gaps": 0
+        }
+      },
+      "by_family": {
+        "BINARY_VERSION_DIFFERS_FROM_INVENTORY": {
+          "claimed_in_scope": 0,
+          "facts": 10,
+          "gap_classes": {
+            "DECLARED_GAP": 8,
+            "NONE": 2
+          },
+          "resolved": 2,
+          "undeclared_gap_rate": null,
+          "undeclared_gaps": 0
+        },
+        "CONFLICTING_EVIDENCE_BETWEEN_COLLECTORS": {
+          "claimed_in_scope": 4,
+          "facts": 20,
+          "gap_classes": {
+            "DECLARED_GAP": 12,
+            "NONE": 8
+          },
+          "resolved": 8,
+          "undeclared_gap_rate": 0.0,
+          "undeclared_gaps": 0
+        },
+        "DISABLED_SERVICE_WITH_RESTART_MECHANISM": {
+          "claimed_in_scope": 4,
+          "facts": 25,
+          "gap_classes": {
+            "DECLARED_GAP": 21,
+            "NONE": 4
+          },
+          "resolved": 4,
+          "undeclared_gap_rate": 0.0,
+          "undeclared_gaps": 0
+        },
+        "MACHINE_WIDE_64BIT": {
+          "claimed_in_scope": 4,
+          "facts": 10,
+          "gap_classes": {
+            "DECLARED_GAP": 4,
+            "NONE": 6
+          },
+          "resolved": 6,
+          "undeclared_gap_rate": 0.0,
+          "undeclared_gaps": 0
+        },
+        "MACHINE_WIDE_WOW6432": {
+          "claimed_in_scope": 4,
+          "facts": 10,
+          "gap_classes": {
+            "DECLARED_GAP": 4,
+            "NONE": 4,
+            "UNDECLARED_GAP": 2
+          },
+          "resolved": 4,
+          "undeclared_gap_rate": 0.5,
+          "undeclared_gaps": 2
+        },
+        "OFFLINE_OR_UNLOADED_USER_HIVE": {
+          "claimed_in_scope": 4,
+          "facts": 10,
+          "gap_classes": {
+            "COLLECTION_ERROR": 10
+          },
+          "resolved": 0,
+          "undeclared_gap_rate": 0.0,
+          "undeclared_gaps": 0
+        },
+        "PACKAGE_ABSENT_VULNERABLE_BINARY_PRESENT": {
+          "claimed_in_scope": 0,
+          "facts": 10,
+          "gap_classes": {
+            "DECLARED_GAP": 10
+          },
+          "resolved": 0,
+          "undeclared_gap_rate": null,
+          "undeclared_gaps": 0
+        },
+        "PACKAGE_PRESENT_DECISIVE_FILE_MISSING": {
+          "claimed_in_scope": 0,
+          "facts": 10,
+          "gap_classes": {
+            "DECLARED_GAP": 8,
+            "NONE": 2
+          },
+          "resolved": 2,
+          "undeclared_gap_rate": null,
+          "undeclared_gaps": 0
+        },
+        "PARTIAL_DEVICE_OR_APPLICATION_SCOPE": {
+          "claimed_in_scope": 4,
+          "facts": 25,
+          "gap_classes": {
+            "DECLARED_GAP": 19,
+            "NONE": 2,
+            "UNDECLARED_GAP": 4
+          },
+          "resolved": 2,
+          "undeclared_gap_rate": 1.0,
+          "undeclared_gaps": 4
+        },
+        "PERMISSION_DENIED_EVIDENCE_PATH": {
+          "claimed_in_scope": 0,
+          "facts": 10,
+          "gap_classes": {
+            "COLLECTION_ERROR": 10
+          },
+          "resolved": 0,
+          "undeclared_gap_rate": null,
+          "undeclared_gaps": 0
+        },
+        "PER_USER_INSTALL": {
+          "claimed_in_scope": 4,
+          "facts": 10,
+          "gap_classes": {
+            "DECLARED_GAP": 4,
+            "NONE": 4,
+            "UNDECLARED_GAP": 2
+          },
+          "resolved": 4,
+          "undeclared_gap_rate": 0.5,
+          "undeclared_gaps": 2
+        },
+        "PORTABLE_UNREGISTERED": {
+          "claimed_in_scope": 0,
+          "facts": 10,
+          "gap_classes": {
+            "DECLARED_GAP": 10
+          },
+          "resolved": 0,
+          "undeclared_gap_rate": null,
+          "undeclared_gaps": 0
+        },
+        "REGISTRY_SPLIT_ACROSS_VIEWS_OR_HIVES": {
+          "claimed_in_scope": 0,
+          "facts": 10,
+          "gap_classes": {
+            "DECLARED_GAP": 8,
+            "NONE": 2
+          },
+          "resolved": 2,
+          "undeclared_gap_rate": null,
+          "undeclared_gaps": 0
+        },
+        "RENAMED_OR_NONDEFAULT_PATH": {
+          "claimed_in_scope": 0,
+          "facts": 10,
+          "gap_classes": {
+            "DECLARED_GAP": 10
+          },
+          "resolved": 0,
+          "undeclared_gap_rate": null,
+          "undeclared_gaps": 0
+        },
+        "RESIDUAL_BINARY_AFTER_UPDATE": {
+          "claimed_in_scope": 0,
+          "facts": 10,
+          "gap_classes": {
+            "DECLARED_GAP": 8,
+            "NONE": 2
+          },
+          "resolved": 2,
+          "undeclared_gap_rate": null,
+          "undeclared_gaps": 0
+        },
+        "SCHEDULED_TASK_RECREATES_COMPONENT": {
+          "claimed_in_scope": 2,
+          "facts": 10,
+          "gap_classes": {
+            "DECLARED_GAP": 8,
+            "NONE": 2
+          },
+          "resolved": 2,
+          "undeclared_gap_rate": 0.0,
+          "undeclared_gaps": 0
+        },
+        "SECOND_LOCAL_USER_INSTALL": {
+          "claimed_in_scope": 4,
+          "facts": 10,
+          "gap_classes": {
+            "DECLARED_GAP": 4,
+            "NONE": 2,
+            "UNDECLARED_GAP": 4
+          },
+          "resolved": 2,
+          "undeclared_gap_rate": 1.0,
+          "undeclared_gaps": 4
+        },
+        "SERVICE_STATE_DIFFERS_ACROSS_REBOOT": {
+          "claimed_in_scope": 2,
+          "facts": 10,
+          "gap_classes": {
+            "DECLARED_GAP": 8,
+            "NONE": 2
+          },
+          "resolved": 2,
+          "undeclared_gap_rate": 0.0,
+          "undeclared_gaps": 0
+        },
+        "SIDE_BY_SIDE_SAFE_AND_VULNERABLE": {
+          "claimed_in_scope": 0,
+          "facts": 10,
+          "gap_classes": {
+            "DECLARED_GAP": 8,
+            "NONE": 2
+          },
+          "resolved": 2,
+          "undeclared_gap_rate": null,
+          "undeclared_gaps": 0
+        },
+        "STALE_CACHED_INVENTORY": {
+          "claimed_in_scope": 4,
+          "facts": 10,
+          "gap_classes": {
+            "DECLARED_GAP": 4,
+            "NONE": 6
+          },
+          "resolved": 6,
+          "undeclared_gap_rate": 0.0,
+          "undeclared_gaps": 0
+        }
+      },
+      "by_installation_type": {
+        "appx": {
+          "claimed_in_scope": 4,
+          "facts": 10,
+          "gap_classes": {
+            "DECLARED_GAP": 6,
+            "UNDECLARED_GAP": 4
+          },
+          "resolved": 0,
+          "undeclared_gap_rate": 1.0,
+          "undeclared_gaps": 4
+        },
+        "arp_machine": {
+          "claimed_in_scope": 12,
+          "facts": 30,
+          "gap_classes": {
+            "DECLARED_GAP": 12,
+            "NONE": 18
+          },
+          "resolved": 18,
+          "undeclared_gap_rate": 0.0,
+          "undeclared_gaps": 0
+        },
+        "arp_user": {
+          "claimed_in_scope": 12,
+          "facts": 30,
+          "gap_classes": {
+            "COLLECTION_ERROR": 10,
+            "DECLARED_GAP": 8,
+            "NONE": 6,
+            "UNDECLARED_GAP": 6
+          },
+          "resolved": 6,
+          "undeclared_gap_rate": 0.5,
+          "undeclared_gaps": 6
+        },
+        "arp_wow6432": {
+          "claimed_in_scope": 4,
+          "facts": 10,
+          "gap_classes": {
+            "DECLARED_GAP": 4,
+            "NONE": 4,
+            "UNDECLARED_GAP": 2
+          },
+          "resolved": 4,
+          "undeclared_gap_rate": 0.5,
+          "undeclared_gaps": 2
+        },
+        "none_portable": {
+          "claimed_in_scope": 0,
+          "facts": 30,
+          "gap_classes": {
+            "DECLARED_GAP": 28,
+            "NONE": 2
+          },
+          "resolved": 2,
+          "undeclared_gap_rate": null,
+          "undeclared_gaps": 0
+        },
+        "not_a_package": {
+          "claimed_in_scope": 8,
+          "facts": 130,
+          "gap_classes": {
+            "COLLECTION_ERROR": 10,
+            "DECLARED_GAP": 100,
+            "NONE": 20
+          },
+          "resolved": 20,
+          "undeclared_gap_rate": 0.0,
+          "undeclared_gaps": 0
+        }
+      },
+      "by_path_root": {
+        "AppDataLocal": {
+          "claimed_in_scope": 0,
+          "facts": 10,
+          "gap_classes": {
+            "DECLARED_GAP": 10
+          },
+          "resolved": 0,
+          "undeclared_gap_rate": null,
+          "undeclared_gaps": 0
+        },
+        "NonStandard": {
+          "claimed_in_scope": 0,
+          "facts": 10,
+          "gap_classes": {
+            "DECLARED_GAP": 10
+          },
+          "resolved": 0,
+          "undeclared_gap_rate": null,
+          "undeclared_gaps": 0
+        },
+        "ProgramData": {
+          "claimed_in_scope": 0,
+          "facts": 10,
+          "gap_classes": {
+            "COLLECTION_ERROR": 10
+          },
+          "resolved": 0,
+          "undeclared_gap_rate": null,
+          "undeclared_gaps": 0
+        },
+        "ProgramFiles": {
+          "claimed_in_scope": 0,
+          "facts": 60,
+          "gap_classes": {
+            "DECLARED_GAP": 48,
+            "NONE": 12
+          },
+          "resolved": 12,
+          "undeclared_gap_rate": null,
+          "undeclared_gaps": 0
+        },
+        "UserProfile": {
+          "claimed_in_scope": 0,
+          "facts": 10,
+          "gap_classes": {
+            "DECLARED_GAP": 10
+          },
+          "resolved": 0,
+          "undeclared_gap_rate": null,
+          "undeclared_gaps": 0
+        },
+        "not_a_file": {
+          "claimed_in_scope": 40,
+          "facts": 140,
+          "gap_classes": {
+            "COLLECTION_ERROR": 10,
+            "DECLARED_GAP": 80,
+            "NONE": 38,
+            "UNDECLARED_GAP": 12
+          },
+          "resolved": 38,
+          "undeclared_gap_rate": 0.3,
+          "undeclared_gaps": 12
+        }
+      },
+      "by_registry_view": {
+        "Registry32": {
+          "claimed_in_scope": 4,
+          "facts": 20,
+          "gap_classes": {
+            "DECLARED_GAP": 12,
+            "NONE": 6,
+            "UNDECLARED_GAP": 2
+          },
+          "resolved": 6,
+          "undeclared_gap_rate": 0.5,
+          "undeclared_gaps": 2
+        },
+        "Registry64": {
+          "claimed_in_scope": 28,
+          "facts": 70,
+          "gap_classes": {
+            "COLLECTION_ERROR": 10,
+            "DECLARED_GAP": 26,
+            "NONE": 24,
+            "UNDECLARED_GAP": 10
+          },
+          "resolved": 24,
+          "undeclared_gap_rate": 0.35714285714285715,
+          "undeclared_gaps": 10
+        },
+        "not_registry": {
+          "claimed_in_scope": 8,
+          "facts": 150,
+          "gap_classes": {
+            "COLLECTION_ERROR": 10,
+            "DECLARED_GAP": 120,
+            "NONE": 20
+          },
+          "resolved": 20,
+          "undeclared_gap_rate": 0.0,
+          "undeclared_gaps": 0
+        }
+      },
+      "by_user_scope": {
+        "current_user": {
+          "claimed_in_scope": 4,
+          "facts": 15,
+          "gap_classes": {
+            "DECLARED_GAP": 9,
+            "NONE": 4,
+            "UNDECLARED_GAP": 2
+          },
+          "resolved": 4,
+          "undeclared_gap_rate": 0.5,
+          "undeclared_gaps": 2
+        },
+        "machine": {
+          "claimed_in_scope": 28,
+          "facts": 205,
+          "gap_classes": {
+            "COLLECTION_ERROR": 10,
+            "DECLARED_GAP": 145,
+            "NONE": 44,
+            "UNDECLARED_GAP": 6
+          },
+          "resolved": 44,
+          "undeclared_gap_rate": 0.21428571428571427,
+          "undeclared_gaps": 6
+        },
+        "other_user_loaded": {
+          "claimed_in_scope": 4,
+          "facts": 10,
+          "gap_classes": {
+            "DECLARED_GAP": 4,
+            "NONE": 2,
+            "UNDECLARED_GAP": 4
+          },
+          "resolved": 2,
+          "undeclared_gap_rate": 1.0,
+          "undeclared_gaps": 4
+        },
+        "other_user_offline": {
+          "claimed_in_scope": 4,
+          "facts": 10,
+          "gap_classes": {
+            "COLLECTION_ERROR": 10
+          },
+          "resolved": 0,
+          "undeclared_gap_rate": 0.0,
+          "undeclared_gaps": 0
+        }
+      },
+      "note": "Pooled across the five passive collectors. Composite and import adapters are reported separately."
+    },
+    "classifications_sha256": "b3cb11c6ba9227a3f3761df8b764f1fd36c403580326230ab0449094d717dbd0",
+    "collection_cost": {
+      "note": "Contract estimates, not measurements. A real run replaces these with wall-clock seconds and record counts from the collector output.",
+      "per_collector": {
+        "A_UNINSTALL_REGISTRY": {
+          "approximate_records": 180,
+          "approximate_seconds": 0.8
+        },
+        "B_EXPANDED_REGISTRY": {
+          "approximate_records": 420,
+          "approximate_seconds": 3.5
+        },
+        "C_PACKAGE_PROVIDER": {
+          "approximate_records": 210,
+          "approximate_seconds": 6.0
+        },
+        "D_FILE_VERSION": {
+          "approximate_records": 1400,
+          "approximate_seconds": 22.0
+        },
+        "E_SERVICE_TASK": {
+          "approximate_records": 310,
+          "approximate_seconds": 4.5
+        },
+        "F_COMPOSITE_ACTIVE": {
+          "approximate_records": 2100,
+          "approximate_seconds": 48.0
+        },
+        "X_DEFENDER_EXPORT": {
+          "approximate_records": 300,
+          "approximate_seconds": 0.2
+        },
+        "X_INTUNE_EXPORT": {
+          "approximate_records": 260,
+          "approximate_seconds": 0.2
+        },
+        "X_SCCM_EXPORT": {
+          "approximate_records": 280,
+          "approximate_seconds": 0.2
+        },
+        "X_TENABLE_EXPORT": {
+          "approximate_records": 340,
+          "approximate_seconds": 0.2
+        }
+      }
+    },
+    "collector_contracts_sha256": "38e9ba1c10c38c4c53d8204cff9167a8cfa84b199dadd4863293b928a1fb0f4f",
+    "composite_reduction_by_baseline": {
+      "A_UNINSTALL_REGISTRY": {
+        "baseline_fixtures_decided": 4,
+        "baseline_silent_misses": 8,
+        "composite_fixtures_decided": 36,
+        "composite_silent_misses": 0,
+        "reduction": 1.0
+      },
+      "B_EXPANDED_REGISTRY": {
+        "baseline_fixtures_decided": 12,
+        "baseline_silent_misses": 0,
+        "composite_fixtures_decided": 36,
+        "composite_silent_misses": 0,
+        "reduction": null
+      },
+      "C_PACKAGE_PROVIDER": {
+        "baseline_fixtures_decided": 8,
+        "baseline_silent_misses": 4,
+        "composite_fixtures_decided": 36,
+        "composite_silent_misses": 0,
+        "reduction": 1.0
+      },
+      "D_FILE_VERSION": {
+        "baseline_fixtures_decided": 8,
+        "baseline_silent_misses": 0,
+        "composite_fixtures_decided": 36,
+        "composite_silent_misses": 0,
+        "reduction": null
+      },
+      "E_SERVICE_TASK": {
+        "baseline_fixtures_decided": 5,
+        "baseline_silent_misses": 0,
+        "composite_fixtures_decided": 36,
+        "composite_silent_misses": 0,
+        "reduction": null
+      }
+    },
+    "composite_silent_misses": 0,
+    "composite_unresolved": {
+      "denominator": 48,
+      "denominator_meaning": "all decisive facts across all fixtures",
+      "numerator": 4,
+      "numerator_meaning": "decisive facts this collector does not settle, for any reason",
+      "value": 0.08333333333333333
+    },
+    "composite_vs_best_passive_reduction": null,
+    "cross_collector_rescue_rate": {
+      "denominator": 190,
+      "denominator_meaning": "all decisive facts missed by a passive collector",
+      "detail": {
+        "rescuing_channel_counts": {
+          "A_UNINSTALL_REGISTRY": 12,
+          "B_EXPANDED_REGISTRY": 40,
+          "C_PACKAGE_PROVIDER": 24,
+          "D_FILE_VERSION": 48,
+          "E_SERVICE_TASK": 32
+        },
+        "unrescued_examples": [
+          [
+            "DISABLED_SERVICE_WITH_RESTART_MECHANISM",
+            "dependent_app_health"
+          ],
+          [
+            "OFFLINE_OR_UNLOADED_USER_HIVE",
+            "offline_hive_entry"
+          ],
+          [
+            "PACKAGE_ABSENT_VULNERABLE_BINARY_PRESENT",
+            "orphan_binary_version"
+          ],
+          [
+            "PARTIAL_DEVICE_OR_APPLICATION_SCOPE",
+            "scoped_app_health"
+          ],
+          [
+            "PARTIAL_DEVICE_OR_APPLICATION_SCOPE",
+            "scoped_arp_entry"
+          ],
+          [
+            "PERMISSION_DENIED_EVIDENCE_PATH",
+            "restricted_binary_version"
+          ],
+          [
+            "PORTABLE_UNREGISTERED",
+            "portable_binary_version"
+          ],
+          [
+            "RENAMED_OR_NONDEFAULT_PATH",
+            "renamed_binary_version"
+          ]
+        ]
+      },
+      "numerator": 120,
+      "numerator_meaning": "decisive facts missed by a passive collector that at least one other implemented channel covers",
+      "value": 0.631578947368421
+    },
+    "fixture_manifest": {
+      "decisive_fact_count": 48,
+      "experiment": "remediation-verification-v3",
+      "family_count": 20,
+      "fixture_count": 40,
+      "fixtures": [
+        {
+          "decisive_fact_count": 1,
+          "expected_persistent_after_reboot": true,
+          "expected_regression": false,
+          "expected_vulnerable": true,
+          "family": "MACHINE_WIDE_64BIT",
+          "fixture_hash": "037dc3d4a0a4c067fa7a44061d0a0bf0f502e56bc5f13b1118ca0d664bbd6a03",
+          "fixture_id": "fx-7af4297781e54e73"
+        },
+        {
+          "decisive_fact_count": 1,
+          "expected_persistent_after_reboot": true,
+          "expected_regression": false,
+          "expected_vulnerable": true,
+          "family": "MACHINE_WIDE_64BIT",
+          "fixture_hash": "b13611c04cc0892f721cb33c1c98311d5ee2d949c84fb587946b42d733e0e458",
+          "fixture_id": "fx-4e4bfc84f6513bea"
+        },
+        {
+          "decisive_fact_count": 1,
+          "expected_persistent_after_reboot": true,
+          "expected_regression": false,
+          "expected_vulnerable": true,
+          "family": "MACHINE_WIDE_WOW6432",
+          "fixture_hash": "6735cb28a393a9090500924ad1a7970a7e309f9efed4634fb66926fe21973dab",
+          "fixture_id": "fx-01812717b5791792"
+        },
+        {
+          "decisive_fact_count": 1,
+          "expected_persistent_after_reboot": true,
+          "expected_regression": false,
+          "expected_vulnerable": true,
+          "family": "MACHINE_WIDE_WOW6432",
+          "fixture_hash": "7518928b799711965a2f20cb04ed9ec33f98e1016bb799705c1d9e78d618aaff",
+          "fixture_id": "fx-aab83b7701794b16"
+        },
+        {
+          "decisive_fact_count": 1,
+          "expected_persistent_after_reboot": true,
+          "expected_regression": false,
+          "expected_vulnerable": true,
+          "family": "PER_USER_INSTALL",
+          "fixture_hash": "8844e8b6a30bde86ad1ef9297fc501e66ae889c76313ce6bf056830a94d9e31d",
+          "fixture_id": "fx-514d93ae61272984"
+        },
+        {
+          "decisive_fact_count": 1,
+          "expected_persistent_after_reboot": true,
+          "expected_regression": false,
+          "expected_vulnerable": true,
+          "family": "PER_USER_INSTALL",
+          "fixture_hash": "9993ff3ab606ae59a37a8c3513249cc1ae0b7e86fd60fd7d2285c66b2427cd2e",
+          "fixture_id": "fx-82c8f58d82cf730c"
+        },
+        {
+          "decisive_fact_count": 1,
+          "expected_persistent_after_reboot": true,
+          "expected_regression": false,
+          "expected_vulnerable": true,
+          "family": "SECOND_LOCAL_USER_INSTALL",
+          "fixture_hash": "387225df4087f56626ca2ce66b813b281279235fd0978f2af63fbc865e2e31aa",
+          "fixture_id": "fx-da63098dbc5ef8b4"
+        },
+        {
+          "decisive_fact_count": 1,
+          "expected_persistent_after_reboot": true,
+          "expected_regression": false,
+          "expected_vulnerable": true,
+          "family": "SECOND_LOCAL_USER_INSTALL",
+          "fixture_hash": "7208aa64d3e8e299b1fbddd2595bedc672474bf71ac00f9df1e3c5fb74592873",
+          "fixture_id": "fx-832cb05b91aec9ad"
+        },
+        {
+          "decisive_fact_count": 1,
+          "expected_persistent_after_reboot": true,
+          "expected_regression": false,
+          "expected_vulnerable": true,
+          "family": "PORTABLE_UNREGISTERED",
+          "fixture_hash": "dffcdc4d3033a86fd6928d69577d0dbb99ff6b010591f36c502a4ea9d246a211",
+          "fixture_id": "fx-2aa82c0c4f0adc7b"
+        },
+        {
+          "decisive_fact_count": 1,
+          "expected_persistent_after_reboot": true,
+          "expected_regression": false,
+          "expected_vulnerable": true,
+          "family": "PORTABLE_UNREGISTERED",
+          "fixture_hash": "8dc92e44f88476b1e1f532f7ba630c3aff9ff433444d1b60dfec96e5bf3af147",
+          "fixture_id": "fx-659708370168100e"
+        },
+        {
+          "decisive_fact_count": 1,
+          "expected_persistent_after_reboot": true,
+          "expected_regression": false,
+          "expected_vulnerable": true,
+          "family": "SIDE_BY_SIDE_SAFE_AND_VULNERABLE",
+          "fixture_hash": "8e7d2cf7ee8ff7f2243c5beaad8e8c6dbabe274627eaf324b1ce97e7b606db7c",
+          "fixture_id": "fx-98219082d60ab1ac"
+        },
+        {
+          "decisive_fact_count": 1,
+          "expected_persistent_after_reboot": true,
+          "expected_regression": false,
+          "expected_vulnerable": true,
+          "family": "SIDE_BY_SIDE_SAFE_AND_VULNERABLE",
+          "fixture_hash": "fc21d72d0e059a46840a246695be00249ecba38ee856e94d4dd1017c0847c642",
+          "fixture_id": "fx-8c9a6b6d56429b3e"
+        },
+        {
+          "decisive_fact_count": 1,
+          "expected_persistent_after_reboot": true,
+          "expected_regression": false,
+          "expected_vulnerable": true,
+          "family": "BINARY_VERSION_DIFFERS_FROM_INVENTORY",
+          "fixture_hash": "8b911a25ed07a985246eb90312ddc66bed91b96c47eba1292de392a7585fa493",
+          "fixture_id": "fx-22f06ce61945f20f"
+        },
+        {
+          "decisive_fact_count": 1,
+          "expected_persistent_after_reboot": true,
+          "expected_regression": false,
+          "expected_vulnerable": true,
+          "family": "BINARY_VERSION_DIFFERS_FROM_INVENTORY",
+          "fixture_hash": "81728e10118158002b4d7341fe0683b3ffc895536d3e9841b6dc458a06383045",
+          "fixture_id": "fx-b26e432ba5006e48"
+        },
+        {
+          "decisive_fact_count": 1,
+          "expected_persistent_after_reboot": true,
+          "expected_regression": false,
+          "expected_vulnerable": true,
+          "family": "RENAMED_OR_NONDEFAULT_PATH",
+          "fixture_hash": "ea06257f56690673fd818e6860e3a510626914800a7ca58dbdf304b8494427bc",
+          "fixture_id": "fx-bc4a51729bf38bab"
+        },
+        {
+          "decisive_fact_count": 1,
+          "expected_persistent_after_reboot": true,
+          "expected_regression": false,
+          "expected_vulnerable": true,
+          "family": "RENAMED_OR_NONDEFAULT_PATH",
+          "fixture_hash": "e417381208e358d8f9a7024bcb69dc1905ea7a739f0d3ffcd426a1b16ded2c5a",
+          "fixture_id": "fx-401b79ee677bc995"
+        },
+        {
+          "decisive_fact_count": 1,
+          "expected_persistent_after_reboot": true,
+          "expected_regression": false,
+          "expected_vulnerable": true,
+          "family": "RESIDUAL_BINARY_AFTER_UPDATE",
+          "fixture_hash": "ea7b581cf0d9b28834dde2c2fc613c3e3da99e6dfbf398e2ed515edf8c653a6f",
+          "fixture_id": "fx-d251418b544cdbab"
+        },
+        {
+          "decisive_fact_count": 1,
+          "expected_persistent_after_reboot": true,
+          "expected_regression": false,
+          "expected_vulnerable": true,
+          "family": "RESIDUAL_BINARY_AFTER_UPDATE",
+          "fixture_hash": "f91041aff43002036189f90879beb92b148cc8a0b090d6c901a08c86bb90cb39",
+          "fixture_id": "fx-ec3d6bf536bb5d65"
+        },
+        {
+          "decisive_fact_count": 2,
+          "expected_persistent_after_reboot": false,
+          "expected_regression": false,
+          "expected_vulnerable": false,
+          "family": "DISABLED_SERVICE_WITH_RESTART_MECHANISM",
+          "fixture_hash": "c2f8fd733cdefdd1d2f97e69910257b9db0c4d3dcd48d42a32d60045cdd0a77b",
+          "fixture_id": "fx-5399cd9fd17d3dbf"
+        },
+        {
+          "decisive_fact_count": 3,
+          "expected_persistent_after_reboot": false,
+          "expected_regression": true,
+          "expected_vulnerable": false,
+          "family": "DISABLED_SERVICE_WITH_RESTART_MECHANISM",
+          "fixture_hash": "d2cff9a557e6e6c9ae8a39ebb0c5c74680a823c73bf3190f0e4abac1f0fff46d",
+          "fixture_id": "fx-39a5010b9588ad25"
+        },
+        {
+          "decisive_fact_count": 1,
+          "expected_persistent_after_reboot": false,
+          "expected_regression": false,
+          "expected_vulnerable": false,
+          "family": "SERVICE_STATE_DIFFERS_ACROSS_REBOOT",
+          "fixture_hash": "b3100f9501dca37f2b39bc35b90881f84d746ed78f603874abb7ad070dbd9d81",
+          "fixture_id": "fx-2bd9a8f9c2cce53d"
+        },
+        {
+          "decisive_fact_count": 1,
+          "expected_persistent_after_reboot": false,
+          "expected_regression": false,
+          "expected_vulnerable": false,
+          "family": "SERVICE_STATE_DIFFERS_ACROSS_REBOOT",
+          "fixture_hash": "04fcc1874cc64ff44a07275e97eb960c2af7e2f09fb4ec37502d7518b7dd6bf3",
+          "fixture_id": "fx-065929083d4ec51a"
+        },
+        {
+          "decisive_fact_count": 1,
+          "expected_persistent_after_reboot": false,
+          "expected_regression": false,
+          "expected_vulnerable": false,
+          "family": "SCHEDULED_TASK_RECREATES_COMPONENT",
+          "fixture_hash": "3f55333923827b5c1503ec8f645a0a598b8378b62c5bdec7383d9acb11bb6b4e",
+          "fixture_id": "fx-c0ce97aa41f8d7af"
+        },
+        {
+          "decisive_fact_count": 1,
+          "expected_persistent_after_reboot": false,
+          "expected_regression": false,
+          "expected_vulnerable": false,
+          "family": "SCHEDULED_TASK_RECREATES_COMPONENT",
+          "fixture_hash": "3893e9f821164400433cf382746a9c2f06c79eef8430d7b66820c4937e632672",
+          "fixture_id": "fx-3a5954b175ce89f1"
+        },
+        {
+          "decisive_fact_count": 1,
+          "expected_persistent_after_reboot": true,
+          "expected_regression": false,
+          "expected_vulnerable": true,
+          "family": "REGISTRY_SPLIT_ACROSS_VIEWS_OR_HIVES",
+          "fixture_hash": "92c64009f61a819690c906c8d84f1820ac47e8a494fccf6d993c1ccc1da7826f",
+          "fixture_id": "fx-3637be0b35f5ae90"
+        },
+        {
+          "decisive_fact_count": 1,
+          "expected_persistent_after_reboot": true,
+          "expected_regression": false,
+          "expected_vulnerable": true,
+          "family": "REGISTRY_SPLIT_ACROSS_VIEWS_OR_HIVES",
+          "fixture_hash": "7af4d43177e58ca18f1e6843ba6de83cdf6c9b2f5baff6d5d3f12567a710af61",
+          "fixture_id": "fx-1603910eaba2d7e7"
+        },
+        {
+          "decisive_fact_count": 1,
+          "expected_persistent_after_reboot": true,
+          "expected_regression": false,
+          "expected_vulnerable": true,
+          "family": "OFFLINE_OR_UNLOADED_USER_HIVE",
+          "fixture_hash": "2a9a2a9a5becd8e5ea018097b6f78c08abf113ebe39250f71962f3720100b718",
+          "fixture_id": "fx-6b982ad56d8ea88a"
+        },
+        {
+          "decisive_fact_count": 1,
+          "expected_persistent_after_reboot": true,
+          "expected_regression": false,
+          "expected_vulnerable": true,
+          "family": "OFFLINE_OR_UNLOADED_USER_HIVE",
+          "fixture_hash": "5ee0a515f8e5653814a9361a8b5238e571e7b0aa2a8776aa4271e2e0182a8012",
+          "fixture_id": "fx-e6a1b4cd0faf1471"
+        },
+        {
+          "decisive_fact_count": 1,
+          "expected_persistent_after_reboot": true,
+          "expected_regression": false,
+          "expected_vulnerable": true,
+          "family": "PERMISSION_DENIED_EVIDENCE_PATH",
+          "fixture_hash": "942617d94b15311279ea4ba6a6f501311c7c804c769411bcacd21568b1914e34",
+          "fixture_id": "fx-03fc102009ea0b6a"
+        },
+        {
+          "decisive_fact_count": 1,
+          "expected_persistent_after_reboot": true,
+          "expected_regression": false,
+          "expected_vulnerable": true,
+          "family": "PERMISSION_DENIED_EVIDENCE_PATH",
+          "fixture_hash": "fd847ff4d0bff8edea67ce1ee09eeb8488cb454e80a3ba23a4c6e11f00f61f70",
+          "fixture_id": "fx-5186606fd6667a86"
+        },
+        {
+          "decisive_fact_count": 1,
+          "expected_persistent_after_reboot": false,
+          "expected_regression": false,
+          "expected_vulnerable": false,
+          "family": "STALE_CACHED_INVENTORY",
+          "fixture_hash": "d540d95ffdfbafc01899c577f9a248617486530fe409f47ee5f9dc9b22959b12",
+          "fixture_id": "fx-a89a080a02e7caa3"
+        },
+        {
+          "decisive_fact_count": 1,
+          "expected_persistent_after_reboot": false,
+          "expected_regression": false,
+          "expected_vulnerable": false,
+          "family": "STALE_CACHED_INVENTORY",
+          "fixture_hash": "f14e80afa4dc62c2e1ed14176d47a422e8596d8f43a708f83e9b1341173bdd18",
+          "fixture_id": "fx-53b36d3a61cec1e8"
+        },
+        {
+          "decisive_fact_count": 1,
+          "expected_persistent_after_reboot": false,
+          "expected_regression": false,
+          "expected_vulnerable": false,
+          "family": "PACKAGE_PRESENT_DECISIVE_FILE_MISSING",
+          "fixture_hash": "68e881b19ffb316618e52e286271a6fd0854656852decd27d27fddf1e886603f",
+          "fixture_id": "fx-3ea9f4f5871319a1"
+        },
+        {
+          "decisive_fact_count": 1,
+          "expected_persistent_after_reboot": false,
+          "expected_regression": false,
+          "expected_vulnerable": false,
+          "family": "PACKAGE_PRESENT_DECISIVE_FILE_MISSING",
+          "fixture_hash": "a25367d68ccc6b20cb32404b58318cf88c980bfdb3236dcd78e9cf22594a6215",
+          "fixture_id": "fx-a112cb2a626b275c"
+        },
+        {
+          "decisive_fact_count": 1,
+          "expected_persistent_after_reboot": true,
+          "expected_regression": false,
+          "expected_vulnerable": true,
+          "family": "PACKAGE_ABSENT_VULNERABLE_BINARY_PRESENT",
+          "fixture_hash": "285d3eef4ee3c68536ac665f2a7ce85f7ce7ecb6a90a9435b9d7d660ca6c34fa",
+          "fixture_id": "fx-30bd9ca355f74c4f"
+        },
+        {
+          "decisive_fact_count": 1,
+          "expected_persistent_after_reboot": true,
+          "expected_regression": false,
+          "expected_vulnerable": true,
+          "family": "PACKAGE_ABSENT_VULNERABLE_BINARY_PRESENT",
+          "fixture_hash": "096561a8b79349bda39f55867c69f4286f4e6a023c2914641b775d9da7bb88c4",
+          "fixture_id": "fx-7e993ab9d1beace1"
+        },
+        {
+          "decisive_fact_count": 2,
+          "expected_persistent_after_reboot": true,
+          "expected_regression": false,
+          "expected_vulnerable": true,
+          "family": "PARTIAL_DEVICE_OR_APPLICATION_SCOPE",
+          "fixture_hash": "e12442f488ce85d3031e5319ac9406ccfee170b362c97fe375d6a650454bbc67",
+          "fixture_id": "fx-8e578b8bb474c4d0"
+        },
+        {
+          "decisive_fact_count": 3,
+          "expected_persistent_after_reboot": true,
+          "expected_regression": true,
+          "expected_vulnerable": true,
+          "family": "PARTIAL_DEVICE_OR_APPLICATION_SCOPE",
+          "fixture_hash": "22b041b4870bc9b692ab4abfb73be47a728e9fe58ab93ac688258690773f3105",
+          "fixture_id": "fx-deb17a35d5976d29"
+        },
+        {
+          "decisive_fact_count": 2,
+          "expected_persistent_after_reboot": true,
+          "expected_regression": false,
+          "expected_vulnerable": true,
+          "family": "CONFLICTING_EVIDENCE_BETWEEN_COLLECTORS",
+          "fixture_hash": "7b4748ccee218f7a7b7a4ccf39e683426001220233a7000db2346304c86a68be",
+          "fixture_id": "fx-ccd8a796e056a97e"
+        },
+        {
+          "decisive_fact_count": 2,
+          "expected_persistent_after_reboot": true,
+          "expected_regression": false,
+          "expected_vulnerable": true,
+          "family": "CONFLICTING_EVIDENCE_BETWEEN_COLLECTORS",
+          "fixture_hash": "d359ef869daddd62fbd376042ed96f8d9ede77ac995082d3dc38d1c136e388f7",
+          "fixture_id": "fx-9b184e95a0802464"
+        }
+      ],
+      "fixtures_sha256": "dba1d314be4899284b6a61bc2635b52a1f2b6dea0dfefb7a0129d5e6ef009934",
+      "full_specifications_sha256": "5f9a2142c6849ffddcbac4d97ec6c1b92a69ef17c3bf7147d37505a3c85198f9",
+      "generation_config": {
+        "excluded_mechanisms": [
+          "Win32_Product"
+        ],
+        "families": [
+          "MACHINE_WIDE_64BIT",
+          "MACHINE_WIDE_WOW6432",
+          "PER_USER_INSTALL",
+          "SECOND_LOCAL_USER_INSTALL",
+          "PORTABLE_UNREGISTERED",
+          "SIDE_BY_SIDE_SAFE_AND_VULNERABLE",
+          "BINARY_VERSION_DIFFERS_FROM_INVENTORY",
+          "RENAMED_OR_NONDEFAULT_PATH",
+          "RESIDUAL_BINARY_AFTER_UPDATE",
+          "DISABLED_SERVICE_WITH_RESTART_MECHANISM",
+          "SERVICE_STATE_DIFFERS_ACROSS_REBOOT",
+          "SCHEDULED_TASK_RECREATES_COMPONENT",
+          "REGISTRY_SPLIT_ACROSS_VIEWS_OR_HIVES",
+          "OFFLINE_OR_UNLOADED_USER_HIVE",
+          "PERMISSION_DENIED_EVIDENCE_PATH",
+          "STALE_CACHED_INVENTORY",
+          "PACKAGE_PRESENT_DECISIVE_FILE_MISSING",
+          "PACKAGE_ABSENT_VULNERABLE_BINARY_PRESENT",
+          "PARTIAL_DEVICE_OR_APPLICATION_SCOPE",
+          "CONFLICTING_EVIDENCE_BETWEEN_COLLECTORS"
+        ],
+        "fixture_id_rule": "sha256('rv3|<family>|<index>')[:16], prefixed 'fx-'",
+        "instances_per_family": 2,
+        "lab_file_root": "C:\\RV3Lab",
+        "lab_registry_root": "SOFTWARE\\RV3Lab",
+        "stub_binary_source": "C:\\Windows\\System32\\notepad.exe"
+      },
+      "generation_config_sha256": "357713831864d763a93f7c54ea9115e0176fc222286a69a4c8fa5e95d487affe",
+      "ground_truth_basis": "specification only; no lab VM was provisioned, so no direct observation exists",
+      "manifest_sha256": "49f5e7ab95f521f58618970cc04423c9e0e2d0316bdaab7d32bfdf10e5578b38",
+      "provisioning_observations": null
+    },
+    "harm_fixture_blessed_rate": {
+      "denominator": 2,
+      "denominator_meaning": "all regression fixtures",
+      "detail": [],
+      "numerator": 0,
+      "numerator_meaning": "regression fixtures whose decisive regression fact is silently missed",
+      "value": 0.0
+    },
+    "lowest_silent_miss_passive_collector": "B_EXPANDED_REGISTRY",
+    "measurement_status": "PREDICTED_FROM_CONTRACTS",
+    "metric_definitions": {
+      "active_request_success_rate": {
+        "denominator": "decisive facts unresolved by the passive union that a widening could reach",
+        "numerator": "scope-widening requests the composite collector can satisfy"
+      },
+      "cross_collector_rescue_rate": {
+        "denominator": "all decisive facts missed by a passive collector",
+        "numerator": "decisive facts missed by a passive collector that at least one other implemented channel covers"
+      },
+      "decisive_undeclared_gap_rate": {
+        "denominator": "decisive facts whose evidence type this collector claims to cover completely",
+        "numerator": "decisive facts silently missed (UNDECLARED_GAP) by this collector"
+      },
+      "false_coverage_claim_rate": {
+        "denominator": "all (fixture, evidence type) completeness claims this collector makes where a decisive fact of that type exists",
+        "numerator": "(fixture, evidence type) completeness claims contradicted by at least one silently missed decisive fact"
+      },
+      "fixture_undeclared_gap_rate": {
+        "denominator": "all fixtures",
+        "numerator": "fixtures with at least one decisive undeclared gap"
+      },
+      "harm_fixture_blessed_rate": {
+        "denominator": "all regression fixtures",
+        "numerator": "regression fixtures whose decisive regression fact is silently missed"
+      },
+      "remaining_false_assurance_rate": {
+        "denominator": "all vulnerable fixtures",
+        "numerator": "vulnerable fixtures where the composite collector silently misses a decisive vulnerability fact, so a verifier would bless them"
+      },
+      "unresolved_decisive_fact_rate": {
+        "denominator": "all decisive facts across all fixtures",
+        "numerator": "decisive facts this collector does not settle, for any reason"
+      },
+      "verification_feasibility": {
+        "denominator": "all fixtures",
+        "numerator": "fixtures where this collector resolves every decisive fact"
+      }
+    },
+    "mode": "DRY_RUN",
+    "passive_silent_miss_counts": {
+      "A_UNINSTALL_REGISTRY": 8,
+      "B_EXPANDED_REGISTRY": 0,
+      "C_PACKAGE_PROVIDER": 4,
+      "D_FILE_VERSION": 0,
+      "E_SERVICE_TASK": 0
+    },
+    "per_collector": {
+      "A_UNINSTALL_REGISTRY": {
+        "claims_complete_for": [
+          "PACKAGE_INVENTORY"
+        ],
+        "contract_basis": "IMPLEMENTED_IN_THIS_REPOSITORY",
+        "decisive_undeclared_gap_rate": {
+          "denominator": 16,
+          "denominator_meaning": "decisive facts whose evidence type this collector claims to cover completely",
+          "detail": [
+            "arp_version_hkcu",
+            "arp_version_other_user",
+            "arp_version_wow",
+            "scoped_arp_entry"
+          ],
+          "numerator": 8,
+          "numerator_meaning": "decisive facts silently missed (UNDECLARED_GAP) by this collector",
+          "value": 0.5
+        },
+        "false_coverage_claim_rate": {
+          "denominator": 16,
+          "denominator_meaning": "all (fixture, evidence type) completeness claims this collector makes where a decisive fact of that type exists",
+          "detail": [
+            [
+              "fx-01812717b5791792",
+              "PACKAGE_INVENTORY"
+            ],
+            [
+              "fx-514d93ae61272984",
+              "PACKAGE_INVENTORY"
+            ],
+            [
+              "fx-82c8f58d82cf730c",
+              "PACKAGE_INVENTORY"
+            ],
+            [
+              "fx-832cb05b91aec9ad",
+              "PACKAGE_INVENTORY"
+            ],
+            [
+              "fx-8e578b8bb474c4d0",
+              "PACKAGE_INVENTORY"
+            ],
+            [
+              "fx-aab83b7701794b16",
+              "PACKAGE_INVENTORY"
+            ],
+            [
+              "fx-da63098dbc5ef8b4",
+              "PACKAGE_INVENTORY"
+            ],
+            [
+              "fx-deb17a35d5976d29",
+              "PACKAGE_INVENTORY"
+            ]
+          ],
+          "numerator": 8,
+          "numerator_meaning": "(fixture, evidence type) completeness claims contradicted by at least one silently missed decisive fact",
+          "value": 0.5
+        },
+        "fixture_undeclared_gap_rate": {
+          "denominator": 40,
+          "denominator_meaning": "all fixtures",
+          "detail": [
+            "fx-01812717b5791792",
+            "fx-514d93ae61272984",
+            "fx-82c8f58d82cf730c",
+            "fx-832cb05b91aec9ad",
+            "fx-8e578b8bb474c4d0",
+            "fx-aab83b7701794b16",
+            "fx-da63098dbc5ef8b4",
+            "fx-deb17a35d5976d29"
+          ],
+          "numerator": 8,
+          "numerator_meaning": "fixtures with at least one decisive undeclared gap",
+          "value": 0.2
+        },
+        "gap_class_totals": {
+          "COLLECTION_ERROR": 4,
+          "DECLARED_GAP": 30,
+          "NONE": 6,
+          "UNDECLARED_GAP": 8
+        },
+        "silent_misses": 8,
+        "unresolved_decisive_fact_rate": {
+          "denominator": 48,
+          "denominator_meaning": "all decisive facts across all fixtures",
+          "numerator": 42,
+          "numerator_meaning": "decisive facts this collector does not settle, for any reason",
+          "value": 0.875
+        },
+        "verification_feasibility": {
+          "denominator": 40,
+          "denominator_meaning": "all fixtures",
+          "detail": [
+            "fx-4e4bfc84f6513bea",
+            "fx-53b36d3a61cec1e8",
+            "fx-7af4297781e54e73",
+            "fx-a89a080a02e7caa3"
+          ],
+          "numerator": 4,
+          "numerator_meaning": "fixtures where this collector resolves every decisive fact",
+          "value": 0.1
+        }
+      },
+      "B_EXPANDED_REGISTRY": {
+        "claims_complete_for": [],
+        "contract_basis": "IMPLEMENTED_IN_THIS_REPOSITORY",
+        "decisive_undeclared_gap_rate": {
+          "denominator": 0,
+          "denominator_meaning": "decisive facts whose evidence type this collector claims to cover completely",
+          "detail": [],
+          "numerator": 0,
+          "numerator_meaning": "decisive facts silently missed (UNDECLARED_GAP) by this collector",
+          "value": null
+        },
+        "false_coverage_claim_rate": {
+          "denominator": 0,
+          "denominator_meaning": "all (fixture, evidence type) completeness claims this collector makes where a decisive fact of that type exists",
+          "detail": [],
+          "numerator": 0,
+          "numerator_meaning": "(fixture, evidence type) completeness claims contradicted by at least one silently missed decisive fact",
+          "value": null
+        },
+        "fixture_undeclared_gap_rate": {
+          "denominator": 40,
+          "denominator_meaning": "all fixtures",
+          "detail": [],
+          "numerator": 0,
+          "numerator_meaning": "fixtures with at least one decisive undeclared gap",
+          "value": 0.0
+        },
+        "gap_class_totals": {
+          "COLLECTION_ERROR": 4,
+          "DECLARED_GAP": 30,
+          "NONE": 14
+        },
+        "silent_misses": 0,
+        "unresolved_decisive_fact_rate": {
+          "denominator": 48,
+          "denominator_meaning": "all decisive facts across all fixtures",
+          "numerator": 34,
+          "numerator_meaning": "decisive facts this collector does not settle, for any reason",
+          "value": 0.7083333333333334
+        },
+        "verification_feasibility": {
+          "denominator": 40,
+          "denominator_meaning": "all fixtures",
+          "detail": [
+            "fx-01812717b5791792",
+            "fx-1603910eaba2d7e7",
+            "fx-3637be0b35f5ae90",
+            "fx-4e4bfc84f6513bea",
+            "fx-514d93ae61272984",
+            "fx-53b36d3a61cec1e8",
+            "fx-7af4297781e54e73",
+            "fx-82c8f58d82cf730c",
+            "fx-832cb05b91aec9ad",
+            "fx-a89a080a02e7caa3",
+            "fx-aab83b7701794b16",
+            "fx-da63098dbc5ef8b4"
+          ],
+          "numerator": 12,
+          "numerator_meaning": "fixtures where this collector resolves every decisive fact",
+          "value": 0.3
+        }
+      },
+      "C_PACKAGE_PROVIDER": {
+        "claims_complete_for": [
+          "PACKAGE_INVENTORY"
+        ],
+        "contract_basis": "IMPLEMENTED_IN_THIS_REPOSITORY",
+        "decisive_undeclared_gap_rate": {
+          "denominator": 16,
+          "denominator_meaning": "decisive facts whose evidence type this collector claims to cover completely",
+          "detail": [
+            "arp_version_other_user",
+            "scoped_arp_entry"
+          ],
+          "numerator": 4,
+          "numerator_meaning": "decisive facts silently missed (UNDECLARED_GAP) by this collector",
+          "value": 0.25
+        },
+        "false_coverage_claim_rate": {
+          "denominator": 16,
+          "denominator_meaning": "all (fixture, evidence type) completeness claims this collector makes where a decisive fact of that type exists",
+          "detail": [
+            [
+              "fx-832cb05b91aec9ad",
+              "PACKAGE_INVENTORY"
+            ],
+            [
+              "fx-8e578b8bb474c4d0",
+              "PACKAGE_INVENTORY"
+            ],
+            [
+              "fx-da63098dbc5ef8b4",
+              "PACKAGE_INVENTORY"
+            ],
+            [
+              "fx-deb17a35d5976d29",
+              "PACKAGE_INVENTORY"
+            ]
+          ],
+          "numerator": 4,
+          "numerator_meaning": "(fixture, evidence type) completeness claims contradicted by at least one silently missed decisive fact",
+          "value": 0.25
+        },
+        "fixture_undeclared_gap_rate": {
+          "denominator": 40,
+          "denominator_meaning": "all fixtures",
+          "detail": [
+            "fx-832cb05b91aec9ad",
+            "fx-8e578b8bb474c4d0",
+            "fx-da63098dbc5ef8b4",
+            "fx-deb17a35d5976d29"
+          ],
+          "numerator": 4,
+          "numerator_meaning": "fixtures with at least one decisive undeclared gap",
+          "value": 0.1
+        },
+        "gap_class_totals": {
+          "COLLECTION_ERROR": 4,
+          "DECLARED_GAP": 30,
+          "NONE": 10,
+          "UNDECLARED_GAP": 4
+        },
+        "silent_misses": 4,
+        "unresolved_decisive_fact_rate": {
+          "denominator": 48,
+          "denominator_meaning": "all decisive facts across all fixtures",
+          "numerator": 38,
+          "numerator_meaning": "decisive facts this collector does not settle, for any reason",
+          "value": 0.7916666666666666
+        },
+        "verification_feasibility": {
+          "denominator": 40,
+          "denominator_meaning": "all fixtures",
+          "detail": [
+            "fx-01812717b5791792",
+            "fx-4e4bfc84f6513bea",
+            "fx-514d93ae61272984",
+            "fx-53b36d3a61cec1e8",
+            "fx-7af4297781e54e73",
+            "fx-82c8f58d82cf730c",
+            "fx-a89a080a02e7caa3",
+            "fx-aab83b7701794b16"
+          ],
+          "numerator": 8,
+          "numerator_meaning": "fixtures where this collector resolves every decisive fact",
+          "value": 0.2
+        }
+      },
+      "D_FILE_VERSION": {
+        "claims_complete_for": [],
+        "contract_basis": "IMPLEMENTED_IN_THIS_REPOSITORY",
+        "decisive_undeclared_gap_rate": {
+          "denominator": 0,
+          "denominator_meaning": "decisive facts whose evidence type this collector claims to cover completely",
+          "detail": [],
+          "numerator": 0,
+          "numerator_meaning": "decisive facts silently missed (UNDECLARED_GAP) by this collector",
+          "value": null
+        },
+        "false_coverage_claim_rate": {
+          "denominator": 0,
+          "denominator_meaning": "all (fixture, evidence type) completeness claims this collector makes where a decisive fact of that type exists",
+          "detail": [],
+          "numerator": 0,
+          "numerator_meaning": "(fixture, evidence type) completeness claims contradicted by at least one silently missed decisive fact",
+          "value": null
+        },
+        "fixture_undeclared_gap_rate": {
+          "denominator": 40,
+          "denominator_meaning": "all fixtures",
+          "detail": [],
+          "numerator": 0,
+          "numerator_meaning": "fixtures with at least one decisive undeclared gap",
+          "value": 0.0
+        },
+        "gap_class_totals": {
+          "COLLECTION_ERROR": 4,
+          "DECLARED_GAP": 32,
+          "NONE": 12
+        },
+        "silent_misses": 0,
+        "unresolved_decisive_fact_rate": {
+          "denominator": 48,
+          "denominator_meaning": "all decisive facts across all fixtures",
+          "numerator": 36,
+          "numerator_meaning": "decisive facts this collector does not settle, for any reason",
+          "value": 0.75
+        },
+        "verification_feasibility": {
+          "denominator": 40,
+          "denominator_meaning": "all fixtures",
+          "detail": [
+            "fx-22f06ce61945f20f",
+            "fx-3ea9f4f5871319a1",
+            "fx-8c9a6b6d56429b3e",
+            "fx-98219082d60ab1ac",
+            "fx-a112cb2a626b275c",
+            "fx-b26e432ba5006e48",
+            "fx-d251418b544cdbab",
+            "fx-ec3d6bf536bb5d65"
+          ],
+          "numerator": 8,
+          "numerator_meaning": "fixtures where this collector resolves every decisive fact",
+          "value": 0.2
+        }
+      },
+      "E_SERVICE_TASK": {
+        "claims_complete_for": [
+          "SERVICE_STATE",
+          "SCHEDULED_TASK",
+          "PERSISTENCE_STATE"
+        ],
+        "contract_basis": "IMPLEMENTED_IN_THIS_REPOSITORY",
+        "decisive_undeclared_gap_rate": {
+          "denominator": 8,
+          "denominator_meaning": "decisive facts whose evidence type this collector claims to cover completely",
+          "detail": [],
+          "numerator": 0,
+          "numerator_meaning": "decisive facts silently missed (UNDECLARED_GAP) by this collector",
+          "value": 0.0
+        },
+        "false_coverage_claim_rate": {
+          "denominator": 8,
+          "denominator_meaning": "all (fixture, evidence type) completeness claims this collector makes where a decisive fact of that type exists",
+          "detail": [],
+          "numerator": 0,
+          "numerator_meaning": "(fixture, evidence type) completeness claims contradicted by at least one silently missed decisive fact",
+          "value": 0.0
+        },
+        "fixture_undeclared_gap_rate": {
+          "denominator": 40,
+          "denominator_meaning": "all fixtures",
+          "detail": [],
+          "numerator": 0,
+          "numerator_meaning": "fixtures with at least one decisive undeclared gap",
+          "value": 0.0
+        },
+        "gap_class_totals": {
+          "COLLECTION_ERROR": 4,
+          "DECLARED_GAP": 36,
+          "NONE": 8
+        },
+        "silent_misses": 0,
+        "unresolved_decisive_fact_rate": {
+          "denominator": 48,
+          "denominator_meaning": "all decisive facts across all fixtures",
+          "numerator": 40,
+          "numerator_meaning": "decisive facts this collector does not settle, for any reason",
+          "value": 0.8333333333333334
+        },
+        "verification_feasibility": {
+          "denominator": 40,
+          "denominator_meaning": "all fixtures",
+          "detail": [
+            "fx-065929083d4ec51a",
+            "fx-2bd9a8f9c2cce53d",
+            "fx-3a5954b175ce89f1",
+            "fx-5399cd9fd17d3dbf",
+            "fx-c0ce97aa41f8d7af"
+          ],
+          "numerator": 5,
+          "numerator_meaning": "fixtures where this collector resolves every decisive fact",
+          "value": 0.125
+        }
+      },
+      "F_COMPOSITE_ACTIVE": {
+        "claims_complete_for": [],
+        "contract_basis": "IMPLEMENTED_IN_THIS_REPOSITORY",
+        "decisive_undeclared_gap_rate": {
+          "denominator": 0,
+          "denominator_meaning": "decisive facts whose evidence type this collector claims to cover completely",
+          "detail": [],
+          "numerator": 0,
+          "numerator_meaning": "decisive facts silently missed (UNDECLARED_GAP) by this collector",
+          "value": null
+        },
+        "false_coverage_claim_rate": {
+          "denominator": 0,
+          "denominator_meaning": "all (fixture, evidence type) completeness claims this collector makes where a decisive fact of that type exists",
+          "detail": [],
+          "numerator": 0,
+          "numerator_meaning": "(fixture, evidence type) completeness claims contradicted by at least one silently missed decisive fact",
+          "value": null
+        },
+        "fixture_undeclared_gap_rate": {
+          "denominator": 40,
+          "denominator_meaning": "all fixtures",
+          "detail": [],
+          "numerator": 0,
+          "numerator_meaning": "fixtures with at least one decisive undeclared gap",
+          "value": 0.0
+        },
+        "gap_class_totals": {
+          "DECLARED_GAP": 4,
+          "NONE": 44
+        },
+        "silent_misses": 0,
+        "unresolved_decisive_fact_rate": {
+          "denominator": 48,
+          "denominator_meaning": "all decisive facts across all fixtures",
+          "numerator": 4,
+          "numerator_meaning": "decisive facts this collector does not settle, for any reason",
+          "value": 0.08333333333333333
+        },
+        "verification_feasibility": {
+          "denominator": 40,
+          "denominator_meaning": "all fixtures",
+          "detail": [
+            "fx-01812717b5791792",
+            "fx-03fc102009ea0b6a",
+            "fx-065929083d4ec51a",
+            "fx-1603910eaba2d7e7",
+            "fx-22f06ce61945f20f",
+            "fx-2aa82c0c4f0adc7b",
+            "fx-2bd9a8f9c2cce53d",
+            "fx-30bd9ca355f74c4f",
+            "fx-3637be0b35f5ae90",
+            "fx-3a5954b175ce89f1",
+            "fx-3ea9f4f5871319a1",
+            "fx-401b79ee677bc995",
+            "fx-4e4bfc84f6513bea",
+            "fx-514d93ae61272984",
+            "fx-5186606fd6667a86",
+            "fx-5399cd9fd17d3dbf",
+            "fx-53b36d3a61cec1e8",
+            "fx-659708370168100e",
+            "fx-7af4297781e54e73",
+            "fx-7e993ab9d1beace1"
+          ],
+          "numerator": 36,
+          "numerator_meaning": "fixtures where this collector resolves every decisive fact",
+          "value": 0.9
+        }
+      },
+      "X_DEFENDER_EXPORT": {
+        "claims_complete_for": [
+          "PACKAGE_INVENTORY"
+        ],
+        "contract_basis": "MODEL_OF_VENDOR_DOCUMENTATION_UNVERIFIED",
+        "decisive_undeclared_gap_rate": {
+          "denominator": 16,
+          "denominator_meaning": "decisive facts whose evidence type this collector claims to cover completely",
+          "detail": [
+            "arp_version_other_user"
+          ],
+          "numerator": 2,
+          "numerator_meaning": "decisive facts silently missed (UNDECLARED_GAP) by this collector",
+          "value": 0.125
+        },
+        "false_coverage_claim_rate": {
+          "denominator": 16,
+          "denominator_meaning": "all (fixture, evidence type) completeness claims this collector makes where a decisive fact of that type exists",
+          "detail": [
+            [
+              "fx-832cb05b91aec9ad",
+              "PACKAGE_INVENTORY"
+            ],
+            [
+              "fx-da63098dbc5ef8b4",
+              "PACKAGE_INVENTORY"
+            ]
+          ],
+          "numerator": 2,
+          "numerator_meaning": "(fixture, evidence type) completeness claims contradicted by at least one silently missed decisive fact",
+          "value": 0.125
+        },
+        "fixture_undeclared_gap_rate": {
+          "denominator": 40,
+          "denominator_meaning": "all fixtures",
+          "detail": [
+            "fx-832cb05b91aec9ad",
+            "fx-da63098dbc5ef8b4"
+          ],
+          "numerator": 2,
+          "numerator_meaning": "fixtures with at least one decisive undeclared gap",
+          "value": 0.05
+        },
+        "gap_class_totals": {
+          "COLLECTION_ERROR": 4,
+          "DECLARED_GAP": 20,
+          "NONE": 22,
+          "UNDECLARED_GAP": 2
+        },
+        "silent_misses": 2,
+        "unresolved_decisive_fact_rate": {
+          "denominator": 48,
+          "denominator_meaning": "all decisive facts across all fixtures",
+          "numerator": 26,
+          "numerator_meaning": "decisive facts this collector does not settle, for any reason",
+          "value": 0.5416666666666666
+        },
+        "verification_feasibility": {
+          "denominator": 40,
+          "denominator_meaning": "all fixtures",
+          "detail": [
+            "fx-01812717b5791792",
+            "fx-22f06ce61945f20f",
+            "fx-4e4bfc84f6513bea",
+            "fx-514d93ae61272984",
+            "fx-53b36d3a61cec1e8",
+            "fx-7af4297781e54e73",
+            "fx-82c8f58d82cf730c",
+            "fx-8c9a6b6d56429b3e",
+            "fx-8e578b8bb474c4d0",
+            "fx-98219082d60ab1ac",
+            "fx-9b184e95a0802464",
+            "fx-a89a080a02e7caa3",
+            "fx-aab83b7701794b16",
+            "fx-b26e432ba5006e48",
+            "fx-ccd8a796e056a97e",
+            "fx-d251418b544cdbab",
+            "fx-ec3d6bf536bb5d65"
+          ],
+          "numerator": 17,
+          "numerator_meaning": "fixtures where this collector resolves every decisive fact",
+          "value": 0.425
+        }
+      },
+      "X_INTUNE_EXPORT": {
+        "claims_complete_for": [
+          "PACKAGE_INVENTORY"
+        ],
+        "contract_basis": "MODEL_OF_VENDOR_DOCUMENTATION_UNVERIFIED",
+        "decisive_undeclared_gap_rate": {
+          "denominator": 16,
+          "denominator_meaning": "decisive facts whose evidence type this collector claims to cover completely",
+          "detail": [
+            "arp_version_other_user"
+          ],
+          "numerator": 2,
+          "numerator_meaning": "decisive facts silently missed (UNDECLARED_GAP) by this collector",
+          "value": 0.125
+        },
+        "false_coverage_claim_rate": {
+          "denominator": 16,
+          "denominator_meaning": "all (fixture, evidence type) completeness claims this collector makes where a decisive fact of that type exists",
+          "detail": [
+            [
+              "fx-832cb05b91aec9ad",
+              "PACKAGE_INVENTORY"
+            ],
+            [
+              "fx-da63098dbc5ef8b4",
+              "PACKAGE_INVENTORY"
+            ]
+          ],
+          "numerator": 2,
+          "numerator_meaning": "(fixture, evidence type) completeness claims contradicted by at least one silently missed decisive fact",
+          "value": 0.125
+        },
+        "fixture_undeclared_gap_rate": {
+          "denominator": 40,
+          "denominator_meaning": "all fixtures",
+          "detail": [
+            "fx-832cb05b91aec9ad",
+            "fx-da63098dbc5ef8b4"
+          ],
+          "numerator": 2,
+          "numerator_meaning": "fixtures with at least one decisive undeclared gap",
+          "value": 0.05
+        },
+        "gap_class_totals": {
+          "COLLECTION_ERROR": 4,
+          "DECLARED_GAP": 30,
+          "NONE": 12,
+          "UNDECLARED_GAP": 2
+        },
+        "silent_misses": 2,
+        "unresolved_decisive_fact_rate": {
+          "denominator": 48,
+          "denominator_meaning": "all decisive facts across all fixtures",
+          "numerator": 36,
+          "numerator_meaning": "decisive facts this collector does not settle, for any reason",
+          "value": 0.75
+        },
+        "verification_feasibility": {
+          "denominator": 40,
+          "denominator_meaning": "all fixtures",
+          "detail": [
+            "fx-01812717b5791792",
+            "fx-4e4bfc84f6513bea",
+            "fx-514d93ae61272984",
+            "fx-53b36d3a61cec1e8",
+            "fx-7af4297781e54e73",
+            "fx-82c8f58d82cf730c",
+            "fx-a89a080a02e7caa3",
+            "fx-aab83b7701794b16"
+          ],
+          "numerator": 8,
+          "numerator_meaning": "fixtures where this collector resolves every decisive fact",
+          "value": 0.2
+        }
+      },
+      "X_SCCM_EXPORT": {
+        "claims_complete_for": [
+          "PACKAGE_INVENTORY"
+        ],
+        "contract_basis": "MODEL_OF_VENDOR_DOCUMENTATION_UNVERIFIED",
+        "decisive_undeclared_gap_rate": {
+          "denominator": 16,
+          "denominator_meaning": "decisive facts whose evidence type this collector claims to cover completely",
+          "detail": [
+            "arp_version_hkcu",
+            "arp_version_other_user",
+            "scoped_arp_entry"
+          ],
+          "numerator": 6,
+          "numerator_meaning": "decisive facts silently missed (UNDECLARED_GAP) by this collector",
+          "value": 0.375
+        },
+        "false_coverage_claim_rate": {
+          "denominator": 16,
+          "denominator_meaning": "all (fixture, evidence type) completeness claims this collector makes where a decisive fact of that type exists",
+          "detail": [
+            [
+              "fx-514d93ae61272984",
+              "PACKAGE_INVENTORY"
+            ],
+            [
+              "fx-82c8f58d82cf730c",
+              "PACKAGE_INVENTORY"
+            ],
+            [
+              "fx-832cb05b91aec9ad",
+              "PACKAGE_INVENTORY"
+            ],
+            [
+              "fx-8e578b8bb474c4d0",
+              "PACKAGE_INVENTORY"
+            ],
+            [
+              "fx-da63098dbc5ef8b4",
+              "PACKAGE_INVENTORY"
+            ],
+            [
+              "fx-deb17a35d5976d29",
+              "PACKAGE_INVENTORY"
+            ]
+          ],
+          "numerator": 6,
+          "numerator_meaning": "(fixture, evidence type) completeness claims contradicted by at least one silently missed decisive fact",
+          "value": 0.375
+        },
+        "fixture_undeclared_gap_rate": {
+          "denominator": 40,
+          "denominator_meaning": "all fixtures",
+          "detail": [
+            "fx-514d93ae61272984",
+            "fx-82c8f58d82cf730c",
+            "fx-832cb05b91aec9ad",
+            "fx-8e578b8bb474c4d0",
+            "fx-da63098dbc5ef8b4",
+            "fx-deb17a35d5976d29"
+          ],
+          "numerator": 6,
+          "numerator_meaning": "fixtures with at least one decisive undeclared gap",
+          "value": 0.15
+        },
+        "gap_class_totals": {
+          "COLLECTION_ERROR": 4,
+          "DECLARED_GAP": 20,
+          "NONE": 18,
+          "UNDECLARED_GAP": 6
+        },
+        "silent_misses": 6,
+        "unresolved_decisive_fact_rate": {
+          "denominator": 48,
+          "denominator_meaning": "all decisive facts across all fixtures",
+          "numerator": 30,
+          "numerator_meaning": "decisive facts this collector does not settle, for any reason",
+          "value": 0.625
+        },
+        "verification_feasibility": {
+          "denominator": 40,
+          "denominator_meaning": "all fixtures",
+          "detail": [
+            "fx-01812717b5791792",
+            "fx-22f06ce61945f20f",
+            "fx-4e4bfc84f6513bea",
+            "fx-53b36d3a61cec1e8",
+            "fx-7af4297781e54e73",
+            "fx-8c9a6b6d56429b3e",
+            "fx-98219082d60ab1ac",
+            "fx-9b184e95a0802464",
+            "fx-a89a080a02e7caa3",
+            "fx-aab83b7701794b16",
+            "fx-b26e432ba5006e48",
+            "fx-ccd8a796e056a97e",
+            "fx-d251418b544cdbab",
+            "fx-ec3d6bf536bb5d65"
+          ],
+          "numerator": 14,
+          "numerator_meaning": "fixtures where this collector resolves every decisive fact",
+          "value": 0.35
+        }
+      },
+      "X_TENABLE_EXPORT": {
+        "claims_complete_for": [
+          "PACKAGE_INVENTORY"
+        ],
+        "contract_basis": "MODEL_OF_VENDOR_DOCUMENTATION_UNVERIFIED",
+        "decisive_undeclared_gap_rate": {
+          "denominator": 16,
+          "denominator_meaning": "decisive facts whose evidence type this collector claims to cover completely",
+          "detail": [
+            "arp_version_other_user",
+            "offline_hive_entry",
+            "scoped_arp_entry"
+          ],
+          "numerator": 6,
+          "numerator_meaning": "decisive facts silently missed (UNDECLARED_GAP) by this collector",
+          "value": 0.375
+        },
+        "false_coverage_claim_rate": {
+          "denominator": 16,
+          "denominator_meaning": "all (fixture, evidence type) completeness claims this collector makes where a decisive fact of that type exists",
+          "detail": [
+            [
+              "fx-6b982ad56d8ea88a",
+              "PACKAGE_INVENTORY"
+            ],
+            [
+              "fx-832cb05b91aec9ad",
+              "PACKAGE_INVENTORY"
+            ],
+            [
+              "fx-8e578b8bb474c4d0",
+              "PACKAGE_INVENTORY"
+            ],
+            [
+              "fx-da63098dbc5ef8b4",
+              "PACKAGE_INVENTORY"
+            ],
+            [
+              "fx-deb17a35d5976d29",
+              "PACKAGE_INVENTORY"
+            ],
+            [
+              "fx-e6a1b4cd0faf1471",
+              "PACKAGE_INVENTORY"
+            ]
+          ],
+          "numerator": 6,
+          "numerator_meaning": "(fixture, evidence type) completeness claims contradicted by at least one silently missed decisive fact",
+          "value": 0.375
+        },
+        "fixture_undeclared_gap_rate": {
+          "denominator": 40,
+          "denominator_meaning": "all fixtures",
+          "detail": [
+            "fx-6b982ad56d8ea88a",
+            "fx-832cb05b91aec9ad",
+            "fx-8e578b8bb474c4d0",
+            "fx-da63098dbc5ef8b4",
+            "fx-deb17a35d5976d29",
+            "fx-e6a1b4cd0faf1471"
+          ],
+          "numerator": 6,
+          "numerator_meaning": "fixtures with at least one decisive undeclared gap",
+          "value": 0.15
+        },
+        "gap_class_totals": {
+          "DECLARED_GAP": 18,
+          "NONE": 24,
+          "UNDECLARED_GAP": 6
+        },
+        "silent_misses": 6,
+        "unresolved_decisive_fact_rate": {
+          "denominator": 48,
+          "denominator_meaning": "all decisive facts across all fixtures",
+          "numerator": 24,
+          "numerator_meaning": "decisive facts this collector does not settle, for any reason",
+          "value": 0.5
+        },
+        "verification_feasibility": {
+          "denominator": 40,
+          "denominator_meaning": "all fixtures",
+          "detail": [
+            "fx-01812717b5791792",
+            "fx-03fc102009ea0b6a",
+            "fx-1603910eaba2d7e7",
+            "fx-22f06ce61945f20f",
+            "fx-3637be0b35f5ae90",
+            "fx-4e4bfc84f6513bea",
+            "fx-514d93ae61272984",
+            "fx-5186606fd6667a86",
+            "fx-53b36d3a61cec1e8",
+            "fx-7af4297781e54e73",
+            "fx-82c8f58d82cf730c",
+            "fx-8c9a6b6d56429b3e",
+            "fx-98219082d60ab1ac",
+            "fx-9b184e95a0802464",
+            "fx-a89a080a02e7caa3",
+            "fx-aab83b7701794b16",
+            "fx-b26e432ba5006e48",
+            "fx-ccd8a796e056a97e",
+            "fx-d251418b544cdbab",
+            "fx-ec3d6bf536bb5d65"
+          ],
+          "numerator": 20,
+          "numerator_meaning": "fixtures where this collector resolves every decisive fact",
+          "value": 0.5
+        }
+      }
+    },
+    "prediction_vs_measurement": null,
+    "provisioning_plan_sha256": "875991010578a5731424dce9a2a500e4b7e796437b0bb13b508be5c0866de4be",
+    "reduction_basis": "absolute silent-miss counts, because the composite claims completeness for nothing and its rate form is undefined",
+    "remaining_false_assurance_rate": {
+      "denominator": 30,
+      "denominator_meaning": "all vulnerable fixtures",
+      "detail": [],
+      "numerator": 0,
+      "numerator_meaning": "vulnerable fixtures where the composite collector silently misses a decisive vulnerability fact, so a verifier would bless them",
+      "value": 0.0
+    },
+    "run_status": "BLOCKED_NOT_EXECUTED",
+    "silent_miss_totals": {
+      "A_UNINSTALL_REGISTRY": 8,
+      "B_EXPANDED_REGISTRY": 0,
+      "C_PACKAGE_PROVIDER": 4,
+      "D_FILE_VERSION": 0,
+      "E_SERVICE_TASK": 0,
+      "F_COMPOSITE_ACTIVE": 0,
+      "X_DEFENDER_EXPORT": 2,
+      "X_INTUNE_EXPORT": 2,
+      "X_SCCM_EXPORT": 6,
+      "X_TENABLE_EXPORT": 6
+    }
+  },
+  "run_metadata": {
+    "blocked_reason": "this is Linux, not Windows; no disposable Windows lab VM is reachable from this session",
+    "classifications_sha256": "b3cb11c6ba9227a3f3761df8b764f1fd36c403580326230ab0449094d717dbd0",
+    "collector_contracts_sha256": "38e9ba1c10c38c4c53d8204cff9167a8cfa84b199dadd4863293b928a1fb0f4f",
+    "commands": [
+      "python3 run_experiment.py",
+      "python3 check_reproducibility.py",
+      "pytest -q",
+      "ruff check ."
+    ],
+    "dependencies": "Python standard library only; no third-party runtime dependencies",
+    "experiment": "remediation-verification-v3",
+    "experiment_revision": "3.0.0",
+    "fixture_manifest_sha256": "49f5e7ab95f521f58618970cc04423c9e0e2d0316bdaab7d32bfdf10e5578b38",
+    "fixture_specifications_sha256": "5f9a2142c6849ffddcbac4d97ec6c1b92a69ef17c3bf7147d37505a3c85198f9",
+    "gates": {
+      "ALLOW_REAL_WINDOWS_LAB": "required for any real collection",
+      "ALLOW_WINDOWS_FIXTURE_SETUP": "required for provisioning",
+      "RV3_LAB_CONFIRMATION": "must equal the target machine's hostname"
+    },
+    "generation_config_sha256": "357713831864d763a93f7c54ea9115e0176fc222286a69a4c8fa5e95d487affe",
+    "git_commit_sha": "9a240f7168f867486a6b8ced11bf0a966481eade",
+    "measurement_status": "PREDICTED_FROM_CONTRACTS",
+    "mode": "DRY_RUN",
+    "network_access_required": false,
+    "platform": "Linux-6.18.44-fc-v21-x86_64-with-glibc2.39",
+    "provisioning_plan_sha256": "875991010578a5731424dce9a2a500e4b7e796437b0bb13b508be5c0866de4be",
+    "python_version": "3.11.15",
+    "real_collection_performed": false,
+    "run_status": "BLOCKED_NOT_EXECUTED",
+    "timestamp_utc": "2026-08-21T14:39:19.078517+00:00"
+  }
+}
