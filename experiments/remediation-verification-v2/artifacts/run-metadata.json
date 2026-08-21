@@ -1,0 +1,43 @@
+{
+  "case_counts": {
+    "conditions_per_partition": 754,
+    "coverage_levels": 5,
+    "families": 13,
+    "instances_per_cell": 2,
+    "mechanisms_below_full_coverage": 7,
+    "partitions": 2,
+    "total_conditions": 1508
+  },
+  "commands": [
+    "python3 run_experiment.py",
+    "python3 check_reproducibility.py",
+    "pytest -q",
+    "ruff check ."
+  ],
+  "conditions_sha256": {
+    "dev": "e722d5ff00fe5790e8ea4ef30543f0b63f9ce5362a64da280aee3221299ceb1e",
+    "holdout": "92cc1e2e36b9d691a10992915572ff7d8accca29f801221d21e4e7456db31f33"
+  },
+  "dependencies": "Python standard library only; no third-party runtime dependencies",
+  "experiment": "remediation-verification-v2",
+  "experiment_revision": "2.0.0",
+  "generation_config_sha256": {
+    "dev": "8793fd88ee76d1184ed61741ab2689958f78cfa0c47a6d453f3cb0a147bb44b7",
+    "holdout": "8793fd88ee76d1184ed61741ab2689958f78cfa0c47a6d453f3cb0a147bb44b7"
+  },
+  "git_commit_sha": "e963696622d493b9ec8e5792f7cf635488311b71",
+  "manifest_sha256": {
+    "dev": "3937ec37e8ae2a309bb89a5ef5a68e0a919a6371dafd4b813aa84923641f3e7e",
+    "holdout": "6c7e34998bee81ba21a81b8dc8d9c6cc53f74bca101908501ba9756b1294ab81"
+  },
+  "master_seed": 20260821,
+  "network_access_required": false,
+  "observations_sha256": {
+    "dev": "88ad31a75144fe4953eca68b229e01dd72c800cf556a65d147e5bc4eb8151293",
+    "holdout": "60a3e775adf2eaf8a73cb81902b0a332a82ac83c5dd3d63270a3855eb410a2a4"
+  },
+  "platform": "Linux-6.18.44-fc-v21-x86_64-with-glibc2.39",
+  "python_version": "3.11.15",
+  "real_endpoint_adapters_enabled": false,
+  "timestamp_utc": "2026-08-21T13:25:44.159996+00:00"
+}

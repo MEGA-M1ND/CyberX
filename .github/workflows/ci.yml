@@ -14,7 +14,8 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  EXPERIMENT_DIR: experiments/remediation-verification-v1
+  V1_DIR: experiments/remediation-verification-v1
+  V2_DIR: experiments/remediation-verification-v2
 
 jobs:
   test:
@@ -33,16 +34,25 @@ jobs:
         run: python -m pip install --upgrade pip pytest
       - name: Confirm no third-party runtime dependencies
         run: |
-          cd "$EXPERIMENT_DIR"
-          python - <<'EOF'
-          import pathlib, sys
+          cd "$V1_DIR" && python - <<'EOF'
+          import sys
           sys.path.insert(0, "src")
           import rvbench.runner, rvbench.analysis.report  # must import with stdlib only
-          print("stdlib-only import OK")
+          print("v1 stdlib-only import OK")
           EOF
-      - name: Run test suite
+          cd "$GITHUB_WORKSPACE/$V2_DIR" && python - <<'EOF'
+          import sys
+          sys.path.insert(0, "src")
+          import rv2.bench.run, rv2.analysis.reports  # must import with stdlib only
+          print("v2 stdlib-only import OK")
+          EOF
+      - name: Run v1 test suite (regression guard)
         run: |
-          cd "$EXPERIMENT_DIR"
+          cd "$V1_DIR"
+          pytest -q
+      - name: Run v2 test suite
+        run: |
+          cd "$V2_DIR"
           pytest -q
 
   lint:
@@ -55,9 +65,13 @@ jobs:
           python-version: '3.12'
       - run: python -m pip install --upgrade pip ruff
       - name: ruff check
-        run: ruff check "$EXPERIMENT_DIR"
+        run: |
+          ruff check "$V1_DIR"
+          ruff check "$V2_DIR"
       - name: byte-compile everything
-        run: python -m compileall -q "$EXPERIMENT_DIR"
+        run: |
+          python -m compileall -q "$V1_DIR"
+          python -m compileall -q "$V2_DIR"
 
   experiment:
     name: experiment reproducibility
@@ -68,22 +82,33 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Reproducibility gate (manifest hash + paired prediction passes)
+      - name: v1 reproducibility gate (frozen artifact must not drift)
         run: |
-          cd "$EXPERIMENT_DIR"
+          cd "$V1_DIR"
           python check_reproducibility.py
-      - name: Run the full experiment end to end
+      - name: v1 end to end
         run: |
-          cd "$EXPERIMENT_DIR"
+          cd "$V1_DIR"
           python run_experiment.py
+      - name: v2 end to end
+        run: |
+          cd "$V2_DIR"
+          python run_experiment.py
+      - name: v2 reproducibility gate (holdout manifest + two prediction passes)
+        run: |
+          cd "$V2_DIR"
+          python check_reproducibility.py
       - name: Upload result artifacts
         uses: actions/upload-artifact@v4
         with:
           name: experiment-results
           path: |
-            ${{ env.EXPERIMENT_DIR }}/results/
-            ${{ env.EXPERIMENT_DIR }}/reports/
-            ${{ env.EXPERIMENT_DIR }}/cases/MANIFEST.json
+            ${{ env.V1_DIR }}/results/
+            ${{ env.V1_DIR }}/reports/
+            ${{ env.V1_DIR }}/cases/MANIFEST.json
+            ${{ env.V2_DIR }}/artifacts/
+            ${{ env.V2_DIR }}/reports/
+            ${{ env.V2_DIR }}/manifests/
           retention-days: 30
 
   safety:
@@ -95,13 +120,16 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install --upgrade pip pytest
-      - name: Assert the benchmark cannot touch the host or the network
+      - name: v1 - assert the benchmark cannot touch the host or the network
         run: |
-          cd "$EXPERIMENT_DIR"
+          cd "$V1_DIR"
           pytest -q tests/test_safety_and_llm.py tests/test_leakage.py
+      - name: v2 - assert the benchmark cannot touch the host or the network
+        run: |
+          cd "$V2_DIR"
+          pytest -q tests/test_safety.py tests/test_layering.py
       - name: Assert real-endpoint adapters stay disabled by default
         run: |
-          cd "$EXPERIMENT_DIR"
           test -z "${ALLOW_REAL_WINDOWS_LAB:-}" || (echo "ALLOW_REAL_WINDOWS_LAB must not be set in CI" && exit 1)
           test -z "${RVBENCH_LLM_ENABLED:-}" || (echo "RVBENCH_LLM_ENABLED must not be set in CI" && exit 1)
           echo "real-endpoint and LLM paths are disabled"

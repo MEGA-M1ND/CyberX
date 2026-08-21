@@ -1,0 +1,52 @@
+{
+  "condition_count": 754,
+  "conditions_sha256": "e722d5ff00fe5790e8ea4ef30543f0b63f9ce5362a64da280aee3221299ceb1e",
+  "experiment": "remediation-verification-v2",
+  "generation_config": {
+    "coverage_levels": [
+      1.0,
+      0.9,
+      0.8,
+      0.6,
+      0.4
+    ],
+    "families": [
+      "GENUINE_REMEDIATION",
+      "EXIT_ZERO_NO_CHANGE",
+      "WRONG_REGISTRY_KEY",
+      "WRONG_PRODUCT_IDENTITY",
+      "SIDE_BY_SIDE_VULNERABLE",
+      "PARTIAL_MULTI_PREDICATE",
+      "SERVICE_RETURNS_AFTER_REBOOT",
+      "REBOOT_REQUIRED_NOT_PERFORMED",
+      "VULNERABLE_BINARY_ON_DISK",
+      "INVENTORY_UPDATED_BINARY_UNCHANGED",
+      "GROUP_PARTIAL_ROLLOUT",
+      "REGRESSION_INTRODUCED",
+      "NEW_EXPOSURE_INTRODUCED"
+    ],
+    "full_coverage_mechanism": "NONE",
+    "instances_per_cell": 2,
+    "master_seed": 20260821,
+    "mechanisms": [
+      "RANDOM_MISSING",
+      "DECISIVE_FIELD_MISSING",
+      "REGRESSION_EVIDENCE_MISSING",
+      "STALE_EVIDENCE",
+      "CONTRADICTORY_EVIDENCE",
+      "SCOPE_MISMATCH",
+      "UNDECLARED_GAP"
+    ],
+    "partitions": [
+      "dev",
+      "holdout"
+    ],
+    "seed_rule": "sha256(partition|family|coverage|mechanism|instance|role) mod 2**31"
+  },
+  "generation_config_sha256": "8793fd88ee76d1184ed61741ab2689958f78cfa0c47a6d453f3cb0a147bb44b7",
+  "manifest_sha256": "3937ec37e8ae2a309bb89a5ef5a68e0a919a6371dafd4b813aa84923641f3e7e",
+  "observations_digest_scope": "uncompressed JSONL bytes",
+  "observations_file": "dev-observations.jsonl.gz",
+  "observations_sha256": "88ad31a75144fe4953eca68b229e01dd72c800cf556a65d147e5bc4eb8151293",
+  "partition": "dev"
+}

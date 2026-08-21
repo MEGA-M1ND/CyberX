@@ -59,3 +59,66 @@ All three arms had 87.5–100% recall on `VERIFIED_REMEDIATED`. The entire sprea
 them was precision: 15.6% → 19.0% → 72.7%. Framing this work as "catching more failures"
 misstates it. The question a verification layer answers is what a claim of "remediated" is
 worth.
+
+---
+
+## F-005 — Nearly-complete evidence is more dangerous than sparse evidence
+**Source:** EXP-002 · **Confidence:** medium-high within the benchmark
+
+For a verifier that cannot see its collector's scope, the unsafe-escape rate is 0% at complete
+coverage, jumps to 35.1% at 90% coverage, and then *declines* to 22.7% at 40%. The relationship
+is a step, not a slope. As coverage keeps falling, whole evidence items disappear rather than
+individual fields, and a missing item is visible without a manifest — so the verifier starts
+abstaining instead of guessing wrong.
+
+**Implication:** a system reporting "collection coverage 92%" is describing its most dangerous
+operating point, not a reassuring one. This was predicted to be monotonic (H1) and is not.
+
+---
+
+## F-006 — Scope awareness is a complete defence against declared gaps and none at all against undeclared ones
+**Source:** EXP-002 · **Confidence:** high within the benchmark
+
+Given a collection manifest that honestly describes what was queried, a fail-closed verifier had
+0 unsafe escapes in 440 adversarially degraded conditions, against 132/440 for the same verifier
+without the manifest (McNemar b=132, c=0, exact p=3.7e-40). When the manifest claimed coverage
+the collector did not have, the same verifier escaped 19/88 — statistically indistinguishable
+from having no manifest at all.
+
+**Implication:** the defensible asset is a collector that knows and reports its own scope, not
+the verification logic sitting on top of it. A verification product built over third-party
+telemetry inherits that telemetry's undeclared gaps and has no defence against them. This
+sharpens F-003 from v1 into a testable claim: the whole approach hinges on one unmeasured
+number, the undeclared-gap rate of real collectors.
+
+---
+
+## F-007 — Fail-closed verification is safe and close to useless until it can ask for more
+**Source:** EXP-002 · **Confidence:** medium-high
+
+A passive fail-closed verifier cut unsafe escape from 28.7% to 3.0% — and abstained on 69.2% of
+cases, with verified-remediation recall of 7.1% at 80% coverage and overall accuracy (27.1%)
+*worse* than the scope-unaware verifier it replaced. Adding a hard cap of three targeted
+evidence requests recovered 254 of its 522 abstentions correctly, 0 incorrectly, created 0 new
+false assurances, held unsafe escape at 3.0%, and raised accuracy to 60.7% at 1.09 requests per
+case.
+
+**Implication:** "fail closed" on its own converts errors into abstentions, which is only a win
+if an abstention is cheaper than a wrong answer. The bounded request channel is what turns the
+trade from a wash into a gain, and it is a product requirement rather than a nicety.
+
+---
+
+## F-008 — Denominators decide the headline
+**Source:** EXP-002 · **Confidence:** high (methodological)
+
+False assurance rate (wrong VERIFIED / all VERIFIED) and unsafe escape rate (unsafe cases called
+VERIFIED / all unsafe cases) point in opposite directions for an arm that abstains a lot. The
+scope-aware verifier's unsafe escape falls from 28.7% to 3.0% while its false-assurance *rate*
+stays at 76% — because the intervention shrinks the very denominator the first metric conditions
+on. Under the declared-adversarial mechanisms the rate is undefined entirely, since the arm never
+claims verification.
+
+**Implication:** any verification benchmark must state both, plus the abstention rate, or the
+choice of metric silently chooses the conclusion. v1's single "false-safe rate" over all cases
+would have hidden this.

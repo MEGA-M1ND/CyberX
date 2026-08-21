@@ -1,0 +1,26 @@
+# Tool configuration only. The benchmark has no third-party runtime dependencies
+# and is not packaged for distribution. Mirrors the v1 experiment's setup.
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+extend-exclude = ["artifacts", "cases", "manifests", "reports"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B"]
+ignore = [
+    "E501",   # length is enforced by line-length, not flagged twice
+    "E731",   # short lambdas are used deliberately in helpers and tests
+    "B905",   # zip(strict=) kept off for readability
+]
+# typing.Dict/List style is used consistently for readability; UP rules are off.
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["E402", "E741"]          # sys.path setup precedes imports; I/V/F/P are verdict aliases
+"run_experiment.py" = ["E402"]
+"check_reproducibility.py" = ["E402"]
+"conftest.py" = ["E402"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
